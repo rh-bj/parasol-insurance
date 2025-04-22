@@ -1,17 +1,18 @@
-= Results
+// 결과 발표와 다음 단계 안내
+= 결과
 include::_attributes.adoc[]
 
-== Board was convinced!
+== 이사회가 납득했습니다!
 :slide:
 
-* Great news! The {company-name} has decided to fully fund this project!
-* We can now move from the prototyping phase to the production phase.
-* We have decided to hire all of you fine people to be part of the team that will build and implement the complete solution.
+* 좋은 소식입니다! {company-name}은 이 프로젝트를 전면적으로 지원하기로 결정했습니다!
+* 이제 우리는 프로토타입 단계에서 실제 운영(프로덕션) 단계로 나아갈 수 있게 되었습니다.
+* 그리고 여러분 모두를 이 솔루션을 설계하고 구현할 핵심 팀의 일원으로 채용하기로 결정했습니다.
 
-== Next steps
+== 다음 단계
 
-We know that you all have various background and responsibilities (Coders, IT, DevOps, Data Scientists, etc..).
+여러분이 각자 서로 다른 역할과 배경을 가지고 있다는 것을 알고 있습니다 (개발자, IT, DevOps, 데이터 사이언티스트 등등).
 
-So before you start working in your narrow area of specialization, we want you all to have a decent understanding of all the work that was done during the prototype phase.
+그래서 각자의 전문 분야에 본격적으로 투입되기 전에, **프로토타입 단계에서 어떤 작업들이 이루어졌는지 전체적으로 이해할 수 있는 시간을 먼저 가지려 합니다.**
 
-The next 75 minutes is your official training session, for you to ramp up and gain an understanding of the various technologies involved during the prototype phase.
+앞으로 75분 동안은, 여러분이 프로토타입 단계에서 사용된 다양한 기술들을 익히고 준비할 수 있도록 하는 **공식 교육 세션**입니다.

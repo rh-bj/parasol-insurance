@@ -1,45 +1,47 @@
-= Validating the environment
+// 워크벤치 환경이 제대로 구성되었는지 검증하는 절차와, 각 서비스가 정상적으로 작동하는지 확인하는 방법
+= 환경 구성 확인하기
 include::_attributes.adoc[]
 
-Now that you are connected to your workbench, let's make sure that all the expected services are responding properly in the cluster.
+워크벤치에 연결이 완료되었으니, 이제 클러스터 내에서 실습에 필요한 모든 서비스가 정상적으로 동작하는지 확인해보겠습니다.
 
-In your workbench:
+여러분의 워크벤치에서:
 
-. In the left hand navigation menu, navigate to the folder called: `parasol-insurance/lab-materials/02`
+. 왼쪽 탐색 메뉴에서 `parasol-insurance/lab-materials/02` 폴더로 이동합니다.
 
-. Open the notebook called `02-05-validating.ipynb`
+. `02-05-validating.ipynb`라는 이름의 노트북을 엽니다.
 
-. If you have never executed Cells in a Jupyter Notebook before, here is what you need to do:
+. 만약 Jupyter Notebook에서 셀을 실행해본 적이 없다면, 아래 단계를 따라 하세요:
 
-.. Click on the **Restart kernel and Run all Cells** link:
+.. **Restart kernel and Run all Cells** 링크를 클릭합니다:
 +
 [.bordershadow]
 image::02/02-05-restart-and-run.png[]
-.. Click **Restart** :
+.. 이후 나오는 팝업에서 **Restart** 버튼을 클릭합니다:
 +
 [.bordershadow]
 image::02/02-05-restart-kernel.png[]
 +
-. Running these cells will confirm that all the lab-required services are responding.
+. 이 셀들을 실행하면, 실습에 필요한 모든 서비스가 응답하고 있는지를 확인할 수 있습니다.
 
-The output should look as follows:
+출력 결과는 아래와 비슷하게 나와야 합니다:
 
 [source,console]
 ----
-Success: Minio is reachable on minio.ic-shared-minio.svc.cluster.local:9000
-Success: Gitea is reachable on gitea.gitea.svc.cluster.local:3000
-Success: Postgres Database is reachable on claimdb.ic-shared-db.svc.cluster.local:5432
-Success: LLM Service is reachable on llm.ic-shared-llm.svc.cluster.local:8000
-Success: LLM Service-FlanT5 is reachable on llm-flant5.ic-shared-llm.svc.cluster.local:3000
-Success: ModelMesh is reachable on modelmesh-serving.ic-shared-img-det.svc.cluster.local:8033
-Success: Milvus Vector DB is reachable on vectordb-milvus.ic-shared-milvus.svc.cluster.local:19530
+Success: Minio is reachable on minio.ic-shared-minio.svc.cluster.local:9000  
+Success: Gitea is reachable on gitea.gitea.svc.cluster.local:3000  
+Success: Postgres Database is reachable on claimdb.ic-shared-db.svc.cluster.local:5432  
+Success: LLM Service is reachable on llm.ic-shared-llm.svc.cluster.local:8000  
+Success: LLM Service-FlanT5 is reachable on llm-flant5.ic-shared-llm.svc.cluster.local:3000  
+Success: ModelMesh is reachable on modelmesh-serving.ic-shared-img-det.svc.cluster.local:8033  
+Success: Milvus Vector DB is reachable on vectordb-milvus.ic-shared-milvus.svc.cluster.local:19530  
 ----
 
-If the output of this notebook looks suspicious, please inform the people leading the {ic}.
+만약 위 노트북의 출력 결과가 이상하거나 오류가 보인다면,  
+{ic} 진행을 맡고 있는 담당자에게 알려주시기 바랍니다.
 
-== Overall view
+== 전체 환경 구조 보기
 
-This is a summarized visualization of how the environment is laid out:
+아래 이미지는 이 환경이 어떻게 구성되어 있는지를 요약해 보여줍니다:
 
 [.bordershadow]
 image::02/ic-eng-diag.drawio.svg[]

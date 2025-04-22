@@ -1,18 +1,18 @@
-= Setting the stage
+= 무대 설정하기
 include::_attributes.adoc[]
 
-In order to make this {ic-lab} seem more realistic, we will be describing this imaginary scenario.
+이 {ic-lab}랩이 보다 현실적으로 느껴지도록 하기 위해, 우리는 이 가상의 시나리오를 설정해 설명하려고 합니다.
 
-== Situation
+== 상황
 :slide:
 
-* We all work for a large multi-national insurance company called "{company-name}":
-** {company-name} is in the midst of digital transformation.
-** It is looking at modernizing practices and leveraging new technologies.
-* A small team was asked to:
-** Review the way insurance claims are currently being processed.
-** Provide advice on potential improvements.
-* That team is currently very small (about 4 people):
-** Findings will be presented to the board.
-** If they are convincing, the team will be granted the resources to implement the recommendations.
-* The next sections in this chapter are the materials that were presented to the board.
+* 우리는 모두 "{company-name}"이라는 대형 다국적 보험회사에서 일하고 있다고 가정합니다:
+** {company-name}은 현재 디지털 전환 과정에 있습니다.
+** 최신 기술과 실무 방식을 도입하려고 검토 중입니다.
+* 소규모 팀이 다음과 같은 요청을 받았습니다:
+** 현재 보험 청구 처리 방식에 대해 검토해달라.
+** 개선 가능성에 대해 조언해달라.
+* 이 팀은 현재 약 4명 정도의 소규모 팀입니다:
+** 조사 결과는 이사회에 보고될 예정입니다.
+** 설득력이 있다고 판단되면, 제안 사항을 실행할 수 있는 자원이 제공될 것입니다.
+* 이 장의 다음 섹션들은 이사회에 제출된 자료들입니다.

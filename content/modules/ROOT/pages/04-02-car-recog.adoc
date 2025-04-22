@@ -1,3 +1,4 @@
+// YOLO 모델이 자동차를 인식하는 방식과 시각적으로 확인하는 코드 작성에 대한 안내
 = Car recognition
 include::_attributes.adoc[]
 
@@ -30,3 +31,38 @@ If you want to dig deeper into this section, follow the instructions below. If y
 - In your running workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
 - Look for (and open) the notebook called `04-02-car-recognition.ipynb`
 - Execute the cells of the notebook, and ensure you understand what is happening
+
+= 자동차 인식
+include::_attributes.adoc[]
+
+== 소개
+
+이전 노트북에서는 YOLO 모델이 사진 속에서 자동차를 식별할 수 있다는 것을 확인했습니다.
+
+[.bordershadow]
+image::04/sample-car-image.png[car image]
+
+YOLO는 한 이미지 안에서 여러 대의 자동차를 감지할 수 있다는 사실도 확인했지만,  
+어떤 차량이 식별되었는지는 구체적으로 확인하지 않았습니다.
+
+[.bordershadow]
+image::04/multiple-car-images.png[multiple cars]
+
+[.bordershadow]
+image::04/model-prediction-results.png[predict cars]
+
+위 이미지에서, YOLO 모델은 **자동차 17대, 트럭 1대**를 감지했습니다.
+
+따라서 이제는 YOLO 모델이 인식한 자동차들 주위에 **테두리 상자(box)** 를 그려주는 코드를 작성해보려고 합니다.
+
+[.bordershadow]
+image::04/box-identified-cars.png[identify cars]
+
+== (선택) 코드 상세 분석 및 실행
+
+이 섹션을 더 깊이 이해하고 싶다면 아래 지침에 따라 진행하세요.  
+만약 시간이 부족하다면, 이 부분은 건너뛰고 다음 섹션으로 넘어가도 괜찮습니다.
+
+- 실행 중인 워크벤치에서 `parasol-insurance/lab-materials/04` 폴더로 이동합니다.
+- `04-02-car-recognition.ipynb` 노트북 파일을 찾아 열어보세요.
+- 노트북 셀을 실행하면서 어떤 작업이 수행되는지 이해해보세요.

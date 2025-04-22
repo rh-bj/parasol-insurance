@@ -1,35 +1,37 @@
-= Pre-Created workbench
+// 사전 생성된 워크벤치에 접속하고 사용하는 방법
+= 사전 생성된 워크벤치
 include::_attributes.adoc[]
 
-Please head to the Workbenches tab.
+이제 **Workbenches** 탭으로 이동하세요.
 
-One of the components that was pre-created for you is the workbench.
+여러분을 위해 미리 생성된 구성 요소 중 하나가 바로 이 **워크벤치**입니다.
 
-* If you click on the arrow next to the workbench, you can see some of the libraries included in it as well as how much resources it has been given.
+* 워크벤치 옆의 화살표를 클릭하면, 이 환경에 포함된 주요 라이브러리들과 할당된 리소스 정보를 확인할 수 있습니다:
 +
 [.bordershadow]
 image::02/02-03-pre-created-workbench-info.png[]
 
-* To connect to the workbench, click the **Open** link:
+* 워크벤치에 접속하려면 **Open** 링크를 클릭하세요:
 +
 [.bordershadow]
 image::02/02-03-open-link.png[]
 
-* Then:
+* 그런 다음 다음 절차를 따르세요:
 
-** Authenticate with the same credentials as earlier:
-*** Your account id: `{user}`
-*** Your password: `{password}`
-* You will be asked to accept the following settings:
+** 앞에서 사용했던 것과 같은 자격 증명으로 로그인합니다:
+*** 계정 ID: `{user}`
+*** 비밀번호: `{password}`
+
+* 아래와 같은 설정을 수락하라는 메시지가 표시됩니다:
 +
 [.bordershadow]
 image::02/02-02-accept.png[]
 
-* Click on *Allow selected permissions*
-* You should now see this:
+* **Allow selected permissions** 버튼을 클릭하세요.
+* 그 후 아래와 같은 화면이 나타납니다:
 +
 [.bordershadow]
 image::02/02-03-pre-created-jupyter.png[]
 
-* Note the extra folder called **parasol-insurance**. +
-* This folder has been cloned from github for you and will be the main working folder for this lab.
+* 여기서 **parasol-insurance**라는 이름의 폴더가 추가로 보일 것입니다. +
+* 이 폴더는 GitHub에서 미리 클론된 폴더이며, 이번 실습에서 주로 사용할 작업 폴더입니다.

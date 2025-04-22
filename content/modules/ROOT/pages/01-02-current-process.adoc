@@ -1,18 +1,18 @@
-= Review of current claims processing
+= 기존 보험 청구 처리방식에 대한 검토
 include::_attributes.adoc[]
 :slide:
 
-* Claims can come in from multiple mediums:
-** email,
-** fax,
-** phone,
-** web form.
-* All formats have to be transcribed into the web form for better uniformity and processing.
-* Claims have to be processed by (human) claims adjusters.
-** They spend an aggregated average of 7 hours/claim.
-** We estimate that human errors account for $2.5M/year in lost revenue.
-** Another $3.5M/year is likely lost due to insurance fraud.
-* There are a lot of inefficiencies!
-** Adjusters report "workload-fatigue", i.e. making mistakes due to the repetitive nature of the work.
-** It also takes a long time to train new adjusters into the specific policies of the companies.
-** Encoding some of that tribal knowledge into a software product is highly desirable.
+* 보험 청구는 다양한 방식으로 접수됩니다:
+** 이메일,
+** 팩스,
+** 전화,
+** 웹 폼.
+* 모든 형식의 청구는 처리의 일관성과 효율성을 위해 웹 폼 형식으로 전환되어야 합니다.
+* 청구 처리는 반드시 (사람인) 손해 사정인이 해야 합니다. (손해 사정인: 보험사고가 일어났을 때 해당 사고가 보험약관에서 규정하는 내용에 부합되는지, 부합된다면 보험금을 얼마나 지급해야 하는지 판단하는 역할)
+** 평균적으로 청구 한 건당 약 7시간의 인력이 소요됩니다.
+** 사람의 실수로 인해 연간 약 250만 달러의 수익 손실이 발생하는 것으로 추정됩니다.
+** 보험 사기로 인해 추가로 연간 약 350만 달러가 손실되고 있는 것으로 보입니다.
+* 많은 비효율이 존재합니다!
+** 손해 사정인들은 반복적인 작업으로 인한 “업무 피로감”을 호소하며, 이로 인해 실수가 발생합니다.
+** 새로 채용된 손해 사정인이 회사의 특정 정책을 제대로 숙지하려면 많은 시간이 걸립니다.
+** 팀 내에 축적된 비공식적인 지식은 소프트웨어로 정형화하는 것이 매우 바람직합니다.

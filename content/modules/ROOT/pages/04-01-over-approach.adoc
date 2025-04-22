@@ -1,3 +1,4 @@
+// YOLOv8 모델을 사용한 이미지 처리 흐름의 전반적인 접근 방식
 = Overall Approach
 include::_attributes.adoc[]
 
@@ -21,3 +22,29 @@ image::04/sample-car-image.png[car image]
 - In your running workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
 - Look for (and open) the notebook called `04-01-over-approach.ipynb`.
 - Execute the cells of the notebook, and ensure you understand what is happening.
+
+
+= 전반적인 접근 방식
+include::_attributes.adoc[]
+
+이번 프로토타입의 일환으로, 우리는 **YOLOv8 모델**을 활용하는 방법을 탐색해보았습니다.  
+이 모델은 https://www.yolov8.com[yolov8,window=_blank]에서 온라인으로 확인하고 다운로드할 수 있습니다.
+
+== 이미지 처리 단계 구성
+
+. 먼저, 모델이 기본적으로 제공하는 기능(out-of-the-box capabilities)을 검토합니다.
+. 이후, 우리에게 필요한 특정 작업을 수행할 수 있도록 **파인튜닝(fine-tuning)** 합니다.
+. 파인튜닝을 통해 생성된 **커스터마이즈된 모델**을 {rhoai}의 **Model Serving**에 배포합니다.
+. 그 다음, 이 모델에 쿼리를 보내어 실제로 동작하는지 확인합니다.
+
+== YOLOv8 모델의 기본 이미지 처리 기능
+
+이제 YOLOv8 모델을 실제로 사용해보며,  
+**정지 이미지(static image)** 속 자동차를 어떻게 인식하는지를 살펴보겠습니다.
+
+[.bordershadow]
+image::04/sample-car-image.png[car image]
+
+- 실행 중인 워크벤치에서 `parasol-insurance/lab-materials/04` 폴더로 이동하세요.
+- `04-01-over-approach.ipynb`라는 이름의 노트북을 찾아 열어주세요.
+- 노트북의 셀을 실행하면서, 각 단계에서 어떤 일이 일어나는지 잘 이해해보세요.

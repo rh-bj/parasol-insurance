@@ -1,52 +1,50 @@
-= Getting connected
+// 교육 세션 시작 전 환경 연결 안내와 지원 방법
+= 연결 준비하기
 include::_attributes.adoc[]
 
-For the purposes of this training session, we have provisioned a single {ocp} cluster, with {rhoai} deployed on it.
+이번 교육 세션을 위해 단일 {ocp} 클러스터가 준비되어 있으며, 그 위에 {rhoai}가 배포되어 있습니다.
 
-Each person attending this lab will have a unique user account in which to do their work.
+실습에 참여하는 모든 사람에게는 개별 사용자 계정이 제공됩니다.
 
-== Environment information
+== 실습 환경 정보
 
-__Note: if you are using the lab-deployed instructions, the values below will render properly. If not, like when using the rendered instructions from the Github repo, placeholder values will appear.__
+* 계정 ID: `{user}`
+* 비밀번호: `{password}`
 
-* Your account id: `{user}`
-* Your password: `{password}`
+새 창이나 탭을 열고, 아래 URL에 접속해 로그인하세요:
 
-In a new window or tab, open the following URL and log in:
-
-* The {rhoai} Dashboard URL for our shared environment:
+* 우리 공동 실습 환경의 {rhoai} 대시보드 주소:
 ** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
-* Click on the `Login with OpenShift` button:
+* `Login with OpenShift` 버튼을 클릭하세요:
 +
 [.bordershadow]
 image::02/02-01-login3.png[]
-* Enter your credentials (as detailed above)
-* The result should look like:
+* 위에 제공된 사용자 정보로 로그인하세요.
+* 로그인 후 화면은 다음과 비슷하게 보일 것입니다:
 +
 [.bordershadow]
 image::02/02-01-login1.png[]
 
-* Because the password is so simple (`{password}`), your browser might display a scary message such as:
+* 비밀번호가 `{password}`처럼 너무 단순하기 때문에, 브라우저에서 아래와 같은 경고 메시지가 나타날 수 있습니다:
 +
 [.bordershadow]
 image::02/02-01-login-scary.png[]
-* It is safe here to ignore this message when it pops up.
+* 이 경우, 해당 메시지는 무시하셔도 괜찮습니다.
 
-* After you authenticate, the result should look like:
+* 인증이 완료되면 다음과 같은 화면이 나타날 것입니다:
 +
 [.bordershadow]
 image::02/02-01-rhoai-front-page.png[]
 
-If you got this far and saw all that, congratulations, you properly connected to the {rhoai} Dashboard Application!
+여기까지 무사히 따라오셨다면, {rhoai} 대시보드 애플리케이션에 정상적으로 연결된 것입니다.  
+이제 본격적으로 {ic} 실습을 시작할 준비가 되었습니다!
 
-We are now ready to start the {ic}.
+== 도움 받기
 
-== Getting Support
+* 대면(오프라인)으로 참석하는 경우:
+** 진행자들이 실습실 안을 돌아다니며 도움을 드릴 예정입니다.
+** 문제가 발생했다면 손을 들고 조용히 어떤 문제가 있는지 설명해 주세요.
 
-* If you attend in person, in the room:
-** Some very kind colleagues of ours will be walking around in the room, to help and/or answer questions.
-** If you run into a particular issue, call out to one of them and quietly explain what the issue is.
-
-* If you attend remotely:
-** The organizer will indicate the best way to ask questions, usually through the video conferencing tool.
-** Depending on the setup, a Slack channel (or similar) may also be available. Please check with the organizer.
+* 원격으로 참석하는 경우:
+** 주최자가 질문 방법에 대해 안내해 줄 것입니다. 보통 화상 회의 도구를 통해 질문하게 됩니다.
+** 상황에 따라 Slack 채널(또는 유사한 커뮤니케이션 채널)이 제공될 수도 있으니, 주최자에게 확인해 주세요.

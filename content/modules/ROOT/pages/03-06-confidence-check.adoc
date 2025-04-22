@@ -1,83 +1,94 @@
-= Confidence-Check Pipeline
+// LLM이 안정적으로 동작하는지 검증하기 위한 신뢰도 점검 파이프라인(confidence-check pipeline) 구축 및 실행
+= 신뢰도 점검 파이프라인 (Confidence-Check Pipeline)
 include::_attributes.adoc[]
 
-== What will the pipeline do?
-To make sure that everything works as we would expect it to, and that the model has not been tampered with, we will create a confidence-check pipeline that tests the model through its endpoint. +
-We will test the response time, the response quality, and that the model hash has not changed. +
-And to make sure it stays the same over time, we'll schedule that pipeline.
+== 파이프라인이 무엇을 하는가?
 
-== Deploy a confidence-check pipeline
+모든 것이 정상적으로 작동하고 있는지, 모델이 변경되지 않았는지를 확인하기 위해  
+모델의 엔드포인트를 테스트하는 **신뢰도 점검 파이프라인(confidence-check pipeline)**을 구성할 것입니다.  
+이 파이프라인에서는 응답 시간, 응답 품질, 모델 해시값이 변경되지 않았는지를 테스트합니다.  
+그리고 이러한 테스트를 정기적으로 수행하기 위해, 이 파이프라인을 **스케줄링**하여 반복 실행되도록 할 것입니다.
 
-In the `parasol-insurance/lab-materials/03/06` folder there are two pipeline files, one `confidence_check.pipeline` and one `confidence_check.yaml` file.
+== 신뢰도 점검 파이프라인 배포하기
 
-The `.pipeline` file can be opened in Elyra to be visually modified and executed, while the `.yaml` file can be imported into the pipeline server through the RHOAI Dashboard. +
-Here we will be running the pipeline through Elyra.
+`parasol-insurance/lab-materials/03/06` 폴더에는 두 개의 파이프라인 파일이 있습니다:  
+하나는 `confidence_check.pipeline` 파일이고, 다른 하나는 `confidence_check.yaml` 파일입니다.
 
-== What is Elyra?
+- `.pipeline` 파일은 **Elyra**에서 열어 시각적으로 수정하거나 실행할 수 있습니다.  
+- `.yaml` 파일은 **RHOAI 대시보드**를 통해 파이프라인 서버에 직접 가져올 수 있습니다.
 
-Elyra is a visual interface to build out pipelines. Think of it as your standard code editor, but drag-and-drop. This also means that we won't execute anything in/with Elyra, but just produce some code (or more specifically, a json in the case of Elyra) that later will be sent elsewhere for execution.
+이 실습에서는 **Elyra를 사용하여 파이프라인을 실행**할 것입니다.
 
-In Elyra, you can drag-and-drop in Python, notebook, or R files into the dashboard and then connect them up into a workflow. +
-You also have a button on the top-right side that allows you to expand additional settings for the pipeline and each step. +
+== Elyra란?
+
+**Elyra**는 파이프라인을 시각적으로 구성할 수 있는 인터페이스입니다.  
+일반적인 코드 에디터를 **드래그 앤 드롭 방식**으로 구성한다고 생각하면 됩니다.  
+Elyra 자체가 코드를 실행하지는 않지만, 실행 가능한 형태의 코드(json 형태)를 만들어  
+다른 실행 환경에서 실행할 수 있도록 해줍니다.
+
+Elyra에서는 Python 스크립트, Jupyter 노트북, R 파일 등을 끌어다 놓고, 단계별로 연결하여 워크플로우를 만들 수 있습니다.  
+우측 상단에는 각 단계별 추가 설정을 펼쳐볼 수 있는 버튼도 있습니다.
++
 [.bordershadow]
 image::03/06-elyra-menu.png[]
 
-Using Elyra, you can get started quickly with prototyping and running pipelines.
+Elyra를 사용하면 파이프라인을 빠르게 초기 구성하고 실행할 수 있습니다.
 
-== Ad-Hoc execution
+== 수동 실행 (Ad-Hoc Execution)
 
-Running it through Elyra is the same as doing an ad-hoc execution of the pipeline, as opposed to importing the pipeline which won't automatically execute it.
+Elyra를 통해 실행하는 것은 **즉석 실행(ad-hoc execution)** 과 동일합니다.  
+이는 `.yaml` 파일을 가져오는 것과 달리, 자동 실행되지 않고 직접 실행을 트리거해야 합니다.
 
-. Start by going to your running workbench
-. Navigate to the folder `parasol-insurance/lab-materials/03/06`
-. Open up the `confidence_check.pipeline` file
-. Here we can see that the pipeline consists of 3 checks:
-.. response quality check
-.. response time check
-.. security check
-. Feel free to peek into each of the python files by double clicking on the nodes to see what they do. +
-. After the tests have been run, we have a final function that will summarize the results and log them.
-. To run the pipeline, press the Play button in the menu bar.
+. 실행 중인 워크벤치로 이동합니다.
+. `parasol-insurance/lab-materials/03/06` 폴더로 이동합니다.
+. `confidence_check.pipeline` 파일을 엽니다.
+. 이 파이프라인은 다음 3가지 검사를 포함하고 있습니다:
+.. 응답 품질 검사
+.. 응답 시간 검사
+.. 보안 관련 검사
+. 각 노드를 더블 클릭하면 연결된 파이썬 파일의 내용을 확인할 수 있습니다.
+. 테스트가 완료되면, 결과를 요약하고 로그에 기록하는 **최종 함수**가 실행됩니다.
+. 파이프라인을 실행하려면 메뉴 바의 **Play** 버튼을 누르세요.
 +
 [.bordershadow]
 image::03/07-elyra-pipeline.png[elyra confidence pipeline]
-. You may get a warning that the pipeline is unsaved, this is normal, just press **Save and Submit** if this happens.
+
+. "파이프라인이 저장되지 않았습니다"라는 경고가 나올 수 있습니다. 이 경우 **Save and Submit** 버튼을 누르세요.
 +
 [.bordershadow]
 image::03/03-06-unsaved-changes.png[]
-. In the next popup, leave the name unchanged and click **OK**:
+
+. 이후 나타나는 팝업에서는 이름을 그대로 두고 **OK** 버튼을 클릭합니다:
 +
 [.bordershadow]
 image::03/03-07-run-pipeline-ok.png[]
 
-. When you get a popup that says **Job submission to Data Science Pipelines succeeded**, click the link **Run details** to see how the pipeline is progressing.
+. "Job submission to Data Science Pipelines succeeded"라는 팝업이 뜨면, **Run details** 링크를 클릭해 실행 진행 상황을 확인하세요.
 +
 [.bordershadow]
 image::03/03-06-running-pipeline.png[]
 
-== Schedule execution
+== 실행 예약하기 (Schedule Execution)
 
-We can also **schedule** an execution so that the confidence check is executed at regular intervals. +
-To do that:
+이 파이프라인을 **정기적으로 실행되도록 예약(schedule)** 할 수도 있습니다.
 
-. Go back to the {rhoai} Data Science Project
-. Find the pipeline you just ran in the Pipelines tab
-. Click the 3 dots at the very end of the line, and click "Create schedule".
+. {rhoai} Data Science Project로 돌아갑니다.
+. 방금 실행한 파이프라인을 **Pipelines** 탭에서 찾습니다.
+. 파이프라인 오른쪽 끝의 점 3개 메뉴를 클릭하고 **Create schedule**을 선택합니다.
 +
 [.bordershadow]
 image::03/07-create-schedule.png[create schedule]
 
-. On the next screen:
-    - keep the **Experiment** to `Default`,
-    - choose a **Name**,
-    - select a `Periodic` **Trigger type**,
-    - run it every **Day**,
-    - keep the `confidence-pipeline` **Pipeline** and **Version**,
-    - and click **Create**:
+. 다음 화면에서 다음과 같이 설정합니다:
+    - **Experiment**: `Default` 그대로 유지
+    - **Name**: 원하는 이름 입력
+    - **Trigger type**: `Periodic` 선택
+    - 주기: `매일(Day)`
+    - **Pipeline** 및 **Version**: `confidence-pipeline` 그대로 유지
+    - 마지막으로 **Create** 클릭
 +
 [.bordershadow]
 image::03/03-06-dailyrun.png[]
 
-
-. We can now leave the confidence-check pipeline alone.
-. It will run daily, and will inform us if anything goes wrong with our LLM.
+. 이제 이 신뢰도 점검 파이프라인은 자동으로 매일 실행됩니다.
+. 모델에 문제가 발생할 경우, 이 파이프라인이 알려줄 것입니다.

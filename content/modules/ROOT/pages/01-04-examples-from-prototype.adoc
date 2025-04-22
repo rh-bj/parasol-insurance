@@ -1,46 +1,46 @@
-= Examples from prototyping work
+= 개선안을 적용해본 예시
 include::_attributes.adoc[]
 
-The examples below are what we hope to achieve through our prototype version of the improved process.
+아래의 예시는 개선된 프로세스를 프로토타입 형태로 구현해보며 실제로 어떤 효과를 기대할 수 있는지를 보여줍니다.
 
-== Using an LLM for text summarization
+== LLM을 활용한 텍스트 요약
 
-* Allows for faster reading by the claims adjuster:
+* 손해 사정인이 문서를 더 빠르게 읽을 수 있도록 지원합니다:
 +
 [.bordershadow]
-image::01/proto-summary.png[test image]
+image::01/proto-summary-kor.png[test image]
 
-== Using an LLM for information extraction
+== LLM을 활용한 정보 추출
 
-* Extract key pieces of information for better population of database:
+* 데이터베이스 입력을 위한 핵심 정보를 자동으로 추출합니다:
 +
 [.bordershadow]
-image::01/proto-info-extract.png[ info extraction]
+image::01/proto-info-extract-kor.png[info extraction]
 
-== Using an LLM for sentiment analysis
+== LLM을 활용한 감정 분석
 
-* Detect tone of text, and potentially act on it:
+* 텍스트의 감정(어조)을 감지하고, 이에 기반한 조치를 가능하게 합니다:
 +
 [.bordershadow]
-image::01/proto-sentiment-analysis.png[]
+image::01/proto-sentiment-analysis-kor.png[]
 
-== Using image recognition to frame vehicle(s) in pictures
+== 이미지 인식을 활용한 차량 식별
 
-* Analyse images provided by customer:
+* 고객이 제출한 사진에서 차량을 식별하고 테두리를 설정합니다:
 +
 [.bordershadow]
-image::01/proto-car-recog.png[]
+image::01/proto-car-recog-kor.png[]
 
-== Using image recognition to detect damage
+== 이미지 인식을 활용한 손상 탐지
 
-* Assessment of damage based on picture:
+* 사진을 기반으로 손상 정도를 평가합니다:
 +
 [.bordershadow]
-image::01/proto-accident-grading.png[]
+image::01/proto-accident-grading-kor.png[]
 
-== Web Application to review/process claims
+== 보험 청구를 검토/처리하는 웹 애플리케이션
 
-* Have an application that ties in these tools together and enables users to process the incoming claims more efficiently:
+* 위 도구들을 통합하여, 사용자들이 들어오는 청구 건을 좀 더 효율적으로 처리할 수 있는 애플리케이션을 제공합니다:
 +
 [.bordershadow]
-image::01/proto-claims-processing-app.png[]
+image::01/proto-claims-processing-app-kor.png[]

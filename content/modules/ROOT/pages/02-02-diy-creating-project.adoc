@@ -1,121 +1,125 @@
-= Creating your project and pipeline server
+= 프로젝트 및 파이프라인 서버 직접 생성하기
 include::_attributes.adoc[]
 
-IMPORTANT: If you've used the auto-created project, you do not need to perform this section. Only do so if you are interested in how a project and pipeline server are created.
+중요: 사전에 자동 생성된 프로젝트를 사용할 예정이라면, 이 섹션은 그냥 넘어가셔도 됩니다.  
+이 섹션은 프로젝트와 파이프라인 서버가 어떻게 생성되는지를 알고 싶은 경우에만 진행하세요.
 
-As a preliminary step, each of you is going to:
+먼저, 여러분 각자는 다음의 준비 단계를 수행하게 됩니다:
 
-. Create a Data Science project:
-** this will help keep your things together
+. 데이터 사이언스 프로젝트 생성:
+** 여러분의 작업 결과를 하나로 정리하는 데 도움이 됩니다.
 
-. Create a Data Connection:
-** we need that for the pipeline server to store its artifacts
+. 데이터 연결(Data Connection) 생성:
+** 파이프라인 서버가 산출물을 저장하는 데 필요합니다.
 
-. Deploy a Data Science Pipeline Server:
-** we will need one, and it's better to create it from the start
+. 데이터 사이언스 파이프라인 서버 배포:
+** 추후 작업에 필요하므로 처음부터 생성하는 것이 좋습니다.
 
-. Launch a Workbench:
-** we will use it to review content and notebooks
+. 워크벤치(Workbench) 실행:
+** 실습 자료와 노트북을 확인하는 데 사용됩니다.
 
-. Clone the git repo into your Workbench:
-** this contains all the code from the prototype
+. Git 저장소를 워크벤치에 클론:
+** 프로토타입에서 사용된 모든 코드가 담겨 있습니다.
 
-The instructions below will guide you through these steps. Follow them carefully.
+아래 지침에 따라 각 단계를 정확히 따라 진행하세요.
 
-== Create a project
+== 프로젝트 생성하기
 
-* First, in the {rhoai} Dashboard application, navigate to the Data Science Projects menu on the left:
+* 먼저, {rhoai} 대시보드 애플리케이션에서 왼쪽 메뉴의 **Data Science Projects** 항목으로 이동합니다:
 +
 [.bordershadow]
 image::02/02-02-ds-proj-nav.png[]
 
-* Create a project with the **same name** as your user id
-** You have been assigned a unique user ID:  `{user}`
-** You need to now create a project with the exact same name: `{user}`
+* 사용자 ID와 **같은 이름**으로 프로젝트를 생성합니다.
+** 여러분에게는 고유한 사용자 ID가 부여되었습니다: `{user}`
+** 동일한 이름으로 프로젝트를 생성해야 합니다: `{user}`
 +
-IMPORTANT: Your assigned user is {user}. Don't mess that up or things will break later on
+중요: 할당된 사용자 이름은 {user}입니다. 실수 없이 정확히 입력하지 않으면 이후 단계에서 오류가 발생할 수 있습니다.
 
-* Leave the resource name unchanged
-* Optionally, enter your first and last name in the description of the project.
-* It should look like this:
+* 리소스 이름은 변경하지 않고 그대로 둡니다.
+* 프로젝트 설명란에는 이름을 입력해도 괜찮습니다.
+* 화면은 다음과 비슷하게 보일 것입니다:
 +
 [.bordershadow]
 image::02/02-02-create-project.png[]
 +
-IMPORTANT: It should **NOT** be `userX` like in the screenshot. (for you, `X` should be a number instead)
+중요: 화면에 표시된 `userX`는 예시일 뿐이며, 여러분은 **`X` 대신 실제 숫자가 포함된 본인의 사용자 ID**를 입력해야 합니다.
 
-== Create a Data Connection for the pipeline server
+== 파이프라인 서버용 데이터 연결 생성하기
 
-* We have deployed an instance of Minio in the cluster to act as a simple Object Storage for our purposes.
-* You will need to **Add data connection** that points to it.
+* 우리는 클러스터 내에 Minio 인스턴스를 배포해 Object Storage로 사용하고 있습니다.
+* 해당 Minio에 연결할 **데이터 연결(Data Connection)** 을 추가해야 합니다.
 +
 [.bordershadow]
 image::02/02-02-add-dc.png[]
 
-* Here is the information you need to enter:
-** Name:
-[.lines_space]
+* 입력해야 할 정보는 다음과 같습니다:
+** 이름:
 [.console-input]
 [source, text]
 [subs=attributes+]
 Shared Minio - pipelines
+
 ** Access Key:
-[.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
 {minio-user}
+
 ** Secret Key:
-[.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
 {minio-pass}
+
 ** Endpoint:
-[.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
 {minio-endpoint}
+
 ** Region:
-[.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
 none
+
 ** Bucket:
-[.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
 {user}
-+
-IMPORTANT: Once again, the bucket you will use has to match with the user ID you were provided
 
-* The result should look like:
++
+중요: 버킷 이름 역시 여러분의 사용자 ID인 `{user}`와 정확히 일치해야 합니다.
+
+* 완료되면 아래와 같은 화면이 나타납니다:
 +
 [.bordershadow]
 image::02/data-connection.png[]
 
-== Create a Pipeline Server
+== 파이프라인 서버 생성하기
 
-It is highly recommended to create your pipeline server before creating a workbench. So let's do that now!
+워크벤치를 생성하기 전에 **반드시 파이프라인 서버를 먼저 생성하는 것이 좋습니다.**  
+지금 이 단계를 진행합시다!
 
-* In your Data Science Project (DSP), click on **Configure pipeline Server**
+* 여러분의 Data Science Project(DSP) 내에서 **Configure pipeline Server** 버튼을 클릭합니다:
 +
 [.bordershadow]
 image::02/02-02-pipelineserver01.png[]
 
-* Select the Key Drop-Down with the option of *"Populate the form with credentials from your selected data connection"* using the Data Connection created earlier (**Shared Minio - pipelines**) and click the **Configure pipeline server** button:
+* "데이터 연결에서 자격 증명으로 양식을 자동 채우기" 옵션을 선택한 뒤, 앞서 생성한 **Shared Minio - pipelines** 데이터 연결을 선택하고  
+**Configure pipeline server** 버튼을 클릭합니다:
 +
 [.bordershadow]
 image::02/02-02-pipelineserver02.png[]
 
-* When your pipeline server is ready, your screen will look like the following:
+* 파이프라인 서버가 준비되면 아래와 같은 화면이 나타납니다:
 +
 [.bordershadow]
 image::02/02-02-pipelineserver03.png[]
 
-At this point, your pipeline server is ready and deployed.
+이 시점에서 파이프라인 서버는 성공적으로 배포된 상태입니다.
 
-IMPORTANT: You need to **wait** until that screen is ready. If it's still spinning, wait for it to complete. If you continue and create your workbench **before** the pipeline server is ready, your workbench will not be able to submit Data Science pipelines to it.
+중요: 해당 화면이 완전히 로딩될 때까지 **반드시 기다려야 합니다.**  
+로딩 중(회전 아이콘)이 남아 있는 상태에서 워크벤치를 먼저 생성하면, 워크벤치가 파이프라인 서버에 접근할 수 없게 됩니다.

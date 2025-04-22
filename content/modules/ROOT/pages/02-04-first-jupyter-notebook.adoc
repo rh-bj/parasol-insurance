@@ -1,63 +1,72 @@
-= Running code in a notebook
+// Jupyter Notebook의 기본 개념과 사용법, 실습 안내
+
+= 노트북에서 코드 실행하기
 include::_attributes.adoc[]
 
-NOTE: If you're already at ease with Jupyter Notebooks, you can skip to the next section.
+NOTE: 이미 Jupyter Notebook 사용에 익숙하다면, 이 섹션은 건너뛰고 다음으로 넘어가도 괜찮습니다.
 
-A notebook is an environment where you have _cells_ that can display formatted text or code.
+노트북은 _셀(cell)_이라는 단위로 구성된 환경으로, 각각의 셀에는 형식을 갖춘 텍스트나 코드가 들어갈 수 있습니다.
 
-This is an empty cell:
+아래는 비어 있는 셀의 예입니다:
 
 [.bordershadow]
 image::02/02-05-cell.png[Jupyter Cell]
 
-This is a cell with some code:
+다음은 코드가 입력된 셀입니다:
 
 [.bordershadow]
 image::02/02-05-cell_code.png[Jupyter Cell Code]
 
-Code cells contain Python code that you can run interactively. You can modify the code and then run it. The code does not run on your computer or in the browser, but directly in the environment that you are connected to, *{rhoai}* in our case.
+코드 셀에는 Python 코드가 들어가며, 이를 **인터랙티브하게 실행할 수 있습니다.** 코드를 수정하고 즉시 실행해볼 수 있습니다.  
+코드는 여러분의 로컬 컴퓨터나 브라우저에서 실행되는 것이 아니라, 지금 연결되어 있는 환경인 *{rhoai}* 상에서 실행됩니다.
 
-You can run a code cell from the notebook interface or from the keyboard:
+코드 셀을 실행하는 방법은 두 가지입니다:
 
-* *From the user interface:* Select the cell (by clicking inside the cell or to the left side of the cell) and then click *Run* from the toolbar.
+* **인터페이스를 통한 실행:** 셀을 클릭해 선택한 다음, 상단 툴바에서 *Run* 버튼을 누릅니다.
 +
 [.bordershadow]
 image::02/02-05-run_button.png[Jupyter Run]
 
-* *From the keyboard:* Press `CTRL`+`ENTER` to run a cell or press `SHIFT`+`ENTER` to run the cell and automatically select the next one.
+* **키보드를 통한 실행:** `CTRL`+`ENTER`를 누르면 셀을 실행하고,  
+  `SHIFT`+`ENTER`를 누르면 셀을 실행한 후 다음 셀로 자동으로 이동합니다.
 
-After you run a cell, you can see the result of its code as well as information about when the cell was run, as shown in this example:
+셀을 실행하면 결과가 바로 아래에 표시되며, 언제 실행되었는지도 확인할 수 있습니다:
 
 [.bordershadow]
 image::02/02-05-cell_run.png[Jupyter run cell]
 
-When you save a notebook, the code and the results are saved. You can reopen the notebook to look at the results without having to run the program again, while still having access to the code.
+노트북을 저장하면 **코드와 실행 결과가 함께 저장됩니다.**  
+나중에 노트북을 다시 열었을 때, 프로그램을 재실행하지 않아도 이전 실행 결과를 확인할 수 있고, 코드는 여전히 수정 가능합니다.
 
-Notebooks are so named because they are like a physical _notebook_: you can take notes about your experiments (which you will do), along with the code itself, including any parameters that you set. You can see the output of the experiment inline (this is the result from a cell after it's run), along with all the notes that you want to take (to do that, from the menu switch the cell type from `Code` to `Markdown`).
+노트북이라는 이름은 종이 노트처럼, **실험 내용을 기록하고 코드와 함께 정리할 수 있다는 점에서 유래되었습니다.**  
+여러분은 실습 중 수행한 실험 결과와 설정한 파라미터 등을 코드 옆에 직접 메모로 남길 수 있습니다.  
+메모를 남기려면 셀의 유형을 `Code`에서 `Markdown`으로 바꾸면 됩니다.
 
-== Try It
+== 직접 해보기
 
-Now that you know the basics, give it a try!
+이제 기본 개념을 익혔으니, 직접 시도해봅시다!
 
-=== Procedure
+=== 실습 절차
 
-In your workbench:
+여러분의 워크벤치에서:
 
-. In the left hand navigation menu, navigate to the folder called: `parasol-insurance/lab-materials/02`
+. 왼쪽 탐색 메뉴에서 `parasol-insurance/lab-materials/02` 폴더로 이동합니다.
 
-. Open the notebook called `02-04-first-jupyter-notebook.ipynb`
+. `02-04-first-jupyter-notebook.ipynb`라는 이름의 노트북을 엽니다.
 
-. Experiment by, for example, running the existing cells, adding more cells and creating functions.
+. 기존 셀을 실행해보거나, 셀을 추가하고 함수를 만들어보는 등 자유롭게 실험해보세요.
 +
-You can do what you want - it's your environment and there is no risk of breaking anything or impacting other users. This environment isolation is also a great advantage brought by {rhoai}.
-. Optionally, create a new notebook in which the code cells are run by using a Python 3 kernel:
-.. Create a new notebook by either selecting *File ->New ->Notebook* or by clicking the Python 3 tile in the Notebook section of the launcher window:
+여기는 여러분만의 환경이기 때문에, 무언가 잘못 건드려도 걱정할 필요가 없습니다.  
+다른 사용자에게 영향을 주지 않으며, 이처럼 격리된 환경은 {rhoai}가 제공하는 큰 장점 중 하나입니다.
+
+. 선택적으로, Python 3 커널을 사용하여 새로운 노트북을 만들어볼 수도 있습니다:
+.. *File → New → Notebook*을 선택하거나, 실행기 창에서 Python 3 타일을 클릭하세요:
 +
 [.bordershadow]
 image::02/02-05-new_notebook.png[alt text]
 
-You can use different kernels, with different languages or versions, to run in your notebook.
+노트북에서는 서로 다른 언어나 버전의 **커널(kernel)** 을 선택해 실행할 수 있습니다.
 
 .Additional resource
 
-* If you want to learn more about notebooks, go to https://jupyter.org/[the Jupyter site,window=_blank].
+* Jupyter Notebook에 대해 더 자세히 알고 싶다면, https://jupyter.org/[공식 Jupyter 사이트,window=_blank]를 방문하세요.
