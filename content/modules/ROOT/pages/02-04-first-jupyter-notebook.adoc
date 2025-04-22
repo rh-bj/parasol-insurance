@@ -5,7 +5,7 @@ include::_attributes.adoc[]
 
 NOTE: 이미 Jupyter Notebook 사용에 익숙하다면, 이 섹션은 건너뛰고 다음으로 넘어가도 괜찮습니다.
 
-노트북은 _셀(cell)_이라는 단위로 구성된 환경으로, 각각의 셀에는 형식을 갖춘 텍스트나 코드가 들어갈 수 있습니다.
+노트북은 __셀(cell)__이라는 단위로 구성된 환경으로, 각각의 셀에는 형식을 갖춘 텍스트나 코드가 들어갈 수 있습니다.
 
 아래는 비어 있는 셀의 예입니다:
 
@@ -27,8 +27,8 @@ image::02/02-05-cell_code.png[Jupyter Cell Code]
 [.bordershadow]
 image::02/02-05-run_button.png[Jupyter Run]
 
-* **키보드를 통한 실행:** `CTRL`+`ENTER`를 누르면 셀을 실행하고,  
-  `SHIFT`+`ENTER`를 누르면 셀을 실행한 후 다음 셀로 자동으로 이동합니다.
+* **키보드를 통한 실행:** `CTRL`+``ENTER``를 누르면 셀을 실행하고,  
+  `SHIFT`+``ENTER``를 누르면 셀을 실행한 후 다음 셀로 자동으로 이동합니다.
 
 셀을 실행하면 결과가 바로 아래에 표시되며, 언제 실행되었는지도 확인할 수 있습니다:
 
@@ -40,7 +40,7 @@ image::02/02-05-cell_run.png[Jupyter run cell]
 
 노트북이라는 이름은 종이 노트처럼, **실험 내용을 기록하고 코드와 함께 정리할 수 있다는 점에서 유래되었습니다.**  
 여러분은 실습 중 수행한 실험 결과와 설정한 파라미터 등을 코드 옆에 직접 메모로 남길 수 있습니다.  
-메모를 남기려면 셀의 유형을 `Code`에서 `Markdown`으로 바꾸면 됩니다.
+메모를 남기려면 셀의 유형을 ``Code``에서 ``Markdown``으로 바꾸면 됩니다.
 
 == 직접 해보기
 
@@ -52,7 +52,7 @@ image::02/02-05-cell_run.png[Jupyter run cell]
 
 . 왼쪽 탐색 메뉴에서 `parasol-insurance/lab-materials/02` 폴더로 이동합니다.
 
-. `02-04-first-jupyter-notebook.ipynb`라는 이름의 노트북을 엽니다.
+. `02-04-first-jupyter-notebook.ipynb` 라는 이름의 노트북을 엽니다.
 
 . 기존 셀을 실행해보거나, 셀을 추가하고 함수를 만들어보는 등 자유롭게 실험해보세요.
 +
@@ -60,12 +60,12 @@ image::02/02-05-cell_run.png[Jupyter run cell]
 다른 사용자에게 영향을 주지 않으며, 이처럼 격리된 환경은 {rhoai}가 제공하는 큰 장점 중 하나입니다.
 
 . 선택적으로, Python 3 커널을 사용하여 새로운 노트북을 만들어볼 수도 있습니다:
-.. *File → New → Notebook*을 선택하거나, 실행기 창에서 Python 3 타일을 클릭하세요:
+.. **File → New → Notebook**을 선택하거나, 실행기 창에서 Python 3 타일을 클릭하세요:
 +
 [.bordershadow]
 image::02/02-05-new_notebook.png[alt text]
 
-노트북에서는 서로 다른 언어나 버전의 **커널(kernel)** 을 선택해 실행할 수 있습니다.
+노트북에서는 서로 다른 언어나 버전의 **커널(kernel)**을 선택해 실행할 수 있습니다.
 
 .Additional resource
 

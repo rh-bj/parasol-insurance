@@ -30,6 +30,6 @@ https://www.ibm.com/topics/embedding[임베딩(Embedding),window=_blank] 형태�
 이 새로운 지식을 모델을 변경하지 않고도 어떻게 활용할 수 있는지 체험해보겠습니다.
 
 `parasol-insurance/lab-materials/03` 폴더로 이동한 뒤,  
-`03-05-retrieval-augmented-generation.ipynb`라는 이름의 노트북을 열고 지침을 따라 진행해 주세요.
+`03-05-retrieval-augmented-generation.ipynb` 라는 이름의 노트북을 열고 지침을 따라 진행해 주세요.
 
 실습이 끝나면 노트북을 닫고 다음 페이지로 넘어가면 됩니다.

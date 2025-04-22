@@ -8,7 +8,7 @@ include::_attributes.adoc[]
 
 . 왼쪽 탐색 메뉴에서 `parasol-insurance/lab-materials/02` 폴더로 이동합니다.
 
-. `02-05-validating.ipynb`라는 이름의 노트북을 엽니다.
+. `02-05-validating.ipynb` 라는 이름의 노트북을 엽니다.
 
 . 만약 Jupyter Notebook에서 셀을 실행해본 적이 없다면, 아래 단계를 따라 하세요:
 
