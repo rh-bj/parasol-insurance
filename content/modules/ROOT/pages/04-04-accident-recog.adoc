@@ -1,21 +1,23 @@
-= Accident Recognition
+= 사고 인식
 include::_attributes.adoc[]
 
-== Introduction
+== 소개
 
-Now that we have retrained our model we can test it against some sample images.
+이제 모델 재학습이 완료되었으니, 몇 가지 테스트 이미지에 대해 모델을 평가해보겠습니다.
 
-We have converted our model to onnx format and placed a copy within an S3 bucket. We will test this version against some sample test images.
+우리는 학습된 모델을 **ONNX 형식**으로 변환하고, 해당 모델 파일을 S3 버킷에 저장해두었습니다.  
+이제 이 ONNX 모델을 사용하여 샘플 테스트 이미지들을 평가해볼 것입니다.
 
-Using the re-trained model, we will see that we are able to identify a severe car crash with 88% certainty, like in the below picture:
+재학습된 모델을 사용하면, 아래 예시처럼 **심각한 자동차 사고(severe crash)**를 **88% 확신도**로 인식할 수 있게 됩니다:
 
 [.bordershadow]
 image::04/retrained-model-results.png[retrained modelresults]
 
-== (Optional) Detailed code and execution
+== (선택) 코드 실행 및 분석
 
-If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
+이 섹션을 더 자세히 실습하고 싶다면 아래 지침을 따라 실행해보세요.  
+시간이 부족하다면 이 부분은 건너뛰고 다음으로 넘어가도 괜찮습니다.
 
-- In your workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
-- Look for (and open) the notebook called `04-04-accident-recog.ipynb`
-- Execute the cells of the notebook.
+- 워크벤치에서 `parasol-insurance/lab-materials/04` 폴더로 이동합니다.
+- `04-04-accident-recog.ipynb` 라는 이름의 노트북을 열어보세요.
+- 노트북의 셀을 실행하면서 실제 모델의 예측 결과를 확인해보세요.

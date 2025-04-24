@@ -1,130 +1,136 @@
-= Pipeline for processing claims
+= 청구 처리용 파이프라인
 include::_attributes.adoc[]
 
-== What will the pipeline do?
-Now that we have the web app deployed, we can see that some claims are still unprocessed.
+== 이 파이프라인은 무엇을 하는가?
+
+웹 애플리케이션을 배포한 지금, 일부 청구 건들이 아직 처리되지 않은 상태로 남아있는 것을 볼 수 있습니다.
 
 [.bordershadow]
 image::05/05-new-app-claim-unprocessed.jpg[]
 
-Of course, we want to execute this processing, and it's even better if it can be fully automated!
+물론 우리는 이러한 청구들을 처리하길 원하며, **자동화된 방식**이라면 더할 나위 없이 좋겠죠!
 
-For that, we will use a pipeline that can either be run ad-hoc or scheduled just like, the confidence check pipeline. However, in this case, it won't technically be a Data Science Pipeline. It will be more of a raw Argo Workflow.
+이를 위해, 이전에 사용한 신뢰도 점검 파이프라인처럼 **수동 실행(ad-hoc)** 또는 **스케줄 실행**이 가능한 파이프라인을 활용할 것입니다.  
+다만 이번에는 기술적으로 Data Science Pipeline이 아닌, **순수 Argo Workflow**에 가깝습니다.
 
-// This pipeline is also a good starting point for creating an ArgoCD or Tekton pipeline which can be automatically triggered.
+// 이 파이프라인은 이후 ArgoCD 또는 Tekton 기반의 자동화 파이프라인을 구성할 때에도 좋은 출발점이 됩니다.
 
-== What's inside the pipeline?
+== 파이프라인 내부 구성
 
-Inside your VSCode workbench (if you have closed/stopped it, please restart it), if you navigate to `parasol-insurance/lab-materials/05/05-05` you can see a variety of files. +
+VSCode 워크벤치 내에서 (종료했었다면 다시 시작하세요), `parasol-insurance/lab-materials/05/05-05` 폴더로 이동하면 여러 파일들을 확인할 수 있습니다.
 
 [.bordershadow]
 image::05/05-process-claims-yaml.png[]
 
+이번에는 `process-claims-pipeline.yaml` 이라는 **파이프라인 정의 파일(YAML)**을 사용하여 청구서를 처리합니다.
 
-This time, we will use the **yaml definition** of a **pipeline**, `process-claims-pipeline.yaml`, to process the claims. +
+주요 구성 파일과 기능은 다음과 같습니다:
 
-Here are the main files of the pipeline and what they do:
+* **get_claims** – 데이터베이스에서 처리되지 않은 청구 건을 가져오고, `claims.json` 파일에 목록을 저장하여 다음 단계로 전달합니다.
+* 다음 스크립트들은 청구 내용을 전체적으로 분석하고, 중요한 정보를 추출한 뒤 DB에 저장합니다:
+** **get_location** – 사고 발생 위치 탐지  
+** **get_accident_time** – 사고 발생 시간 추출  
+** **summarize_text** – 청구 내용 요약  
+** **get_sentiment** – 텍스트 감정 분석
+* **detect_objects** – 청구서에 첨부된 이미지를 다운로드하고, AI 기반 객체 탐지 모델을 활용하여 이미지 내 피해 상황을 분류합니다.
 
-* *get_claims* - Will connect to the database, fetch any unprocessed claims, and add them to a list that will be passed to the other tasks through a file: `claims.json`
-* The following scripts will go through all the claims that need to be processed, and use the full body of the text to try and find some important feature, then push the results to the database:
-** *get_location* - Finds the location of the accident
-** *get_accident_time* - Finds the time of the accident
-** *summarize_text* - Makes a short summary of the text
-** *get_sentiment* - Gets the sentiment of the text
-* *detect_objects* - Downloads the images of the claim and uses the served object-detection model to classify the damages in the image
+== 파이프라인 결과 저장소
 
-== Pipeline artefacts storage
+파이프라인 실행에 앞서, 중간 결과와 파일을 저장할 **스토리지 공간**이 필요합니다.  
 
-Before we can run the pipeline, we need a place to store intermediary files and results in. +
-
-This storage has already been created for you. +
-
-You can verify that the Cluster Storage `Data Pipeline` is available in the {rhoai} Dashboard, in the **Cluster Storage** section of your project. +
+이 스토리지는 이미 사전에 생성되어 있으며, {rhoai} 대시보드의 **Cluster Storage** 섹션에서 `Data Pipeline` 이라는 이름으로 확인할 수 있습니다.
 
 [.bordershadow]
 image::05/05-data-pipeline-storage.png[]
 
-== Import the pipeline
+== 파이프라인 가져오기
 
-To import the pipeline, start by downloading the `process-claims-pipeline.yaml` file locally.
-Navigate to `parasol-insurance/lab-materials/05/05-05` to find it.
+파이프라인을 가져오기 위해 먼저 `process-claims-pipeline.yaml` 파일을 로컬로 다운로드해야 합니다.  
+해당 파일은 `parasol-insurance/lab-materials/05/05-05` 폴더에 있습니다.
 
+* VSCode 워크벤치에서:
+** 해당 파일을 마우스 오른쪽 클릭 → **Download** 선택
+** 로컬 PC에 저장하세요
 
-* Start by downloading the `process-claims-pipeline.yaml` file locally to your laptop
-** In your VSCode Workbench, right-click on the file, and select **Download**
-** Save the file somewhere on your laptop
-* Then go to the {rhoai} Dashboard
-* Select your Data Science project
-* Scroll down until you see the **Pipelines** section
-* Click **Import Pipeline**
+* 그 다음 {rhoai} 대시보드로 이동합니다.
+* 자신의 Data Science 프로젝트를 선택합니다.
+* 아래로 스크롤하여 **Pipelines** 섹션을 찾습니다.
+* **Import Pipeline** 버튼을 클릭합니다.
 +
 [.bordershadow]
 image::05/05-import-pipeline.png[import pipeline]
 
-* Now upload the `process-claims-pipeline.yaml` file, either by drag-and-dropping or using the Upload button
-* Then make sure to give your pipeline a good name like `Process Claims Pipeline`
-* It should look something like this:
+* 로컬에 저장한 `process-claims-pipeline.yaml` 파일을 드래그하거나 Upload 버튼을 눌러 업로드합니다.
+* 이름은 `Process Claims Pipeline` 처럼 직관적으로 설정하세요.
 +
 [.bordershadow]
 image::05/05-import-pipeline-highlighted.png[imported pipeline]
 
-* Click  **Import Pipeline** and you should see it appear under the Data Science Pipelines section:
+* **Import Pipeline** 버튼을 클릭하면, 해당 파이프라인이 리스트에 나타납니다.
 +
 [.bordershadow]
 image::05/05-process-claims-pipeline-imported.png[]
 
-== Run the pipeline
+== 파이프라인 실행
 
-* From the drop-down menu `Actions` on the top right, select `Create Run` (don't mind the popup about the Kubeflow v1 SDK, it is just a warning if you were to use a previous version):
+* 우측 상단의 `Actions` 드롭다운에서 **Create Run**을 선택합니다.  
+(Kubeflow v1 SDK 관련 팝업은 무시해도 됩니다)
 +
 [.bordershadow]
 image::05/05-create-run.png[create run]
 
-* Use these settings (leave the others with their default values):
-** Run details->Name:
-[.lines_space]
+* 다음 설정을 입력합니다 (그 외 항목은 기본값 유지):
+
+** Run details → Name:
 [.console-input]
 [source, text]
 [subs=attributes+]
 Process Claim Run
-** Parameters->claim_id:
-[.lines_space]
+
+** Parameters → claim_id:
 [.console-input]
 [source, text]
 [subs=attributes+]
 0
-** Parameters->detection_endpoint:
-[.lines_space]
+
+** Parameters → detection_endpoint:
 [.console-input]
 [source, text]
 [subs=attributes+]
 http://modelmesh-serving.{user}:8008
 
-This is the same route to the object detection endpoint that was used earlier in the workshop.
+→ 이는 이전 실습에서 사용한 객체 탐지 모델 엔드포인트와 동일합니다.
 
-* When done it should look something like this:
+* 설정이 완료되면 아래와 같은 화면이 보입니다:
 +
 [.bordershadow]
 image::05/05-run-settings-create-pipeline.png[run settings]
 
-* Note that by changing claim_id you can change which claim to process. We set it to 0 to process all unprocessed claims
+* `claim_id` 값을 변경하면 특정 청구 ID만 처리할 수도 있지만,  
+   0으로 설정하면 **모든 미처리 청구를 일괄 처리**합니다.
 
-* Click **Create** and watch it run (it will take 5-15 seconds to start):
+* **Create** 버튼을 눌러 실행을 시작하세요 (시작까지 5~15초 소요).
 +
 [.bordershadow]
 image::05/05-process-claims.png[process]
 
-== Check the results
+== 결과 확인하기
 
-* After the pipeline has finished running, you can go to the app and take a look at the claims.
-* You will now see that all the claims are processed (you may need to refresh the page).
+* 파이프라인 실행이 완료되면, 애플리케이션으로 돌아가 청구 목록을 확인해보세요.
+* 이제 모든 청구가 처리된 상태일 것입니다. (필요시 새로고침)
 +
 [.bordershadow]
 image::05/05-process-claim3-app.jpg[claim3processed]
 
-* Click on the claim CLM502803 and you will see that it has been processed.
-* Instead of just a long body, you will now see a summary, a location field, an accident time field, and a sentiment field.
-* You can also see that we have new image(s) which have bounding boxes where the damage is:
+* 예: 청구건 **CLM502803**을 클릭하면, 해당 청구가 처리된 것을 확인할 수 있습니다.
+* 원래는 단순 텍스트만 있던 부분에:
+  - 텍스트 요약
+  - 사고 위치
+  - 사고 시간
+  - 감정 분석 결과  
+  등의 필드가 추가되어 있습니다.
+
+* 또한, 피해가 감지된 **이미지에는 경계 상자(bounding box)**도 함께 표시됩니다.
 +
 [.bordershadow]
 image::05/05-processed-claim.jpg[claim3processed]

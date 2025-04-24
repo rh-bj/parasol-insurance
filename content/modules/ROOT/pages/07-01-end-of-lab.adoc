@@ -10,3 +10,23 @@ The instructions of this {ic} are always available at https://rh-aiservices-bu.g
 == Acknowledgements
 
 Thanks to everyone who helped create this {ic}, https://github.com/rh-aiservices-bu/parasol-insurance/graphs/contributors[contributors,window=_blank] and reviewers!
+
+= 참여해주셔서 감사합니다!
+include::_attributes.adoc[]
+
+이번 실습에 함께해주셔서 감사합니다. 
+이 시간이 여러분에게 유익했고, **지능형 애플리케이션**이 어떻게 구성되는지를 이해하는 데 도움이 되었기를 바랍니다.
+
+실습 중 콘텐츠에서 문제가 발견되었거나, 수정 및 개선을 위한 제안을 하고 싶으시다면 언제든지 다음 링크를 통해 공유해 주세요:
+
+- https://github.com/rh-aiservices-bu/parasol-insurance/issues[이슈 등록하기,window=_blank]  
+- https://github.com/rh-aiservices-bu/parasol-insurance/pulls[Pull Request 보내기,window=_blank]
+
+{ic}의 전체 실습 자료는 다음 링크에서 언제든지 확인하실 수 있습니다. (영문으로 된 원본본) 
+https://rh-aiservices-bu.github.io/parasol-insurance/[https://rh-aiservices-bu.github.io/parasol-insurance/,window=_blank]  
+※ 해당 사이트는 지속적으로 개선되며 새로운 콘텐츠로 업데이트됩니다. 꼭 즐겨찾기 해두세요!
+
+== 제작진에게 감사의 말씀
+
+이번 {ic}의 콘텐츠 제작 및 리뷰에 참여해주신  
+모든 https://github.com/rh-aiservices-bu/parasol-insurance/graphs/contributors[기여자 및 검토자 여러분,window=_blank]께 진심으로 감사드립니다!

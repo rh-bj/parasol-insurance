@@ -1,51 +1,56 @@
-= Potential Improvements and Refinements
+// 실습에 사용된 프로토타입 시스템을 어떻게 개선할 수 있을지에 대한 피드백 유도 및 내부 평가 내용 공유
+
+= 개선 가능성과 향후 정제 방향
 include::_attributes.adoc[]
 
-== To the {ic} materials
+== {ic} 자료에 대한 피드백
 
-If you have any feedback regarding this {ic}, please use https://github.com/rh-aiservices-bu/parasol-insurance/issues[Issues,window=_blank] and https://github.com/rh-aiservices-bu/parasol-insurance/pulls[Pull Requests,window=_blank].
+이 {ic}에 대해 피드백이 있다면, https://github.com/rh-aiservices-bu/parasol-insurance/issues[Issues,window=_blank] 및 https://github.com/rh-aiservices-bu/parasol-insurance/pulls[Pull Requests,window=_blank]를 이용해서 남겨주세요.
 
-But this section of the {ic} is not meant for Improvements and Refinements **to the lab**. Instead it is about...
+하지만 주시는 피드백은 **실습 자료 자체**의 개선을 위한 것이 아니라…
 
-== To the presented prototype
+== 프로토타입 자체에 대한 개선 방향
 
-What we have shown in this {ic} is a very rough prototype, put together very quickly, in order to demonstrate:
+이번 {ic}에서 보여준 시스템은 **매우 간단한 프로토타입**으로, 다음과 같은 목적을 위해 빠르게 구성된 데모입니다.
 
-* Which improvements could be done
-* How long it would take to do them
+* 어떤 기능들을 개선할 수 있는지 보여주기
+* 이러한 개선에 얼마나 시간이 소요될 수 있는지 가늠하기
 
-In such a situation, it is common to go fast and make short-term decisions since there is no guarantee that this will become a real project.
+이처럼 빠르게 구성된 프로토타입에서는 “진짜 프로젝트로 발전할 수 있을지” 확신이 없기 때문에, **성급하게 진행하고 단기적인 결정**을 내리는 것이 일반적입니다. 
 
-Therefore, now, we need to review what was done, and make suggestions along these axes.
+이제 다음과 같은 질문들을 바탕으로 현재 상태를 점검하고, 개선을 제안하는 것이 좋습니다.
 
-* What **other** tools and techniques could be used in order to make the experience of our claims adjusters even better, more streamlined?
+* **우리 사용자(이 예제에서는 보험 청구 손해 사정인)들의 경험**을 더 향상시키기 위해, 다른 도구나 기술은 어떤 것을 사용할 수 있을까요?
 
-* Is our current application robust enough? Describe what scenarios might make it harder to use?
+* 현재 애플리케이션은 충분히 **견고한 구조**를 가지고 있을까요? 어떤 상황에서 사용이 어려워질 수 있을까요?
 
-* How efficiently are we going to be able to make updates to its components if we need to? Is there a chance that making a change to the LLM model, the YOLOV8 model, the database, the application, will introduce breaking changes?
+* 만약 LLM 모델, YOLOv8, 데이터베이스, 프론트엔드 등을 수정해야 한다면, **이 변경 사항이 다른 구성 요소에 영향을 줄 가능성은 없을까요?**
 
-* If that is the case, what would we want to do to avoid those risks?
+* 만약 그런 가능성이 있다면, **어떤 방식을 통해 위험을 줄이고 시스템을 안정화**시킬 수 있을까요?
 
-* Which parts seem to still be manual and time-consuming, and how could we automate them better, to avoid human errors if we can.
+* 현재 시스템에서 여전히 **수동 작업**이 필요한 부분은 무엇일까요? 이러한 작업을 어떻게 자동화하면 **휴먼 에러를 줄일 수 있을까요?**
 
-**Think about these questions first**
+**먼저 위 질문들을 고민해보시면 좋을 것 같습니다.**
 
-If you want to read what **we** thought could be improved, read below! (responses are not exhaustive)
+그다음, 우리가 생각해본 개선 아이디어는 아래에서 확인할 수 있습니다. (아래 응답은 완전히 작성된 것이 아니며, 단순 참고용입니다)
+
 [%collapsible]
 ====
+* 고객이 제출한 이미지와 내부 기록이 **불일치**하는 부분을 자동 감지하는 기능을 추가할 수 있습니다:
+** 차량의 모델, 색상이 다르거나,
+** 번호판이 사진에 보이는데 기록과 불일치할 경우 등
 
-* We could have something that analyzes the images and checks for discrepancies with the customer data, such as:
-** Not the same make or color car as what is on file.
-** Mismatch in license plate, if visible in the picture.
-* We've only scratched the surface with gitops and Data Science pipelines here
-** There was no performance testing done. If too many users connect at the same time, it might overwhelm either the app, the database, the LLM, etc...
-* Currently, most simple changes would probably end up breaking the application. And the person who, for example decides to change Granite-7B for Flan-T5-Large would not necessarily realize that.
-** It would be critical to have multiple instances (Dev/Test/UAT/Prod) of the application.
-** It would also be required to have integration pipelines run in these environments to confirm that changes made do not break the overall application.
-* We could ask the LLM to start writing a response to the customer.
-** It could be just to ask for missing details.
-** or it could be to let them know whether the claim is accepted or denied.
-* However, to do this, the LLM would have to be aware of the policies that the {company-name} uses to make those determinations.
-** This could be an interesting use-case for the https://research.ibm.com/blog/retrieval-augmented-generation-RAG[RAG,window=_blank] approach.
+* 현재 실습에서는 GitOps나 Data Science Pipeline을 단순히 맛보기 수준으로만 사용했습니다.
+** 성능 테스트는 전혀 하지 않았습니다. 동시에 많은 사용자가 접속할 경우, 애플리케이션, DB, LLM 등이 과부하될 수 있습니다.
 
+* 현재는 간단한 수정이라도 **애플리케이션이 쉽게 깨질 수 있는 구조**입니다. 예를 들어 Granite-7B 모델을 Flan-T5-Large로 바꾸면 전체 기능이 작동하지 않을 수 있습니다.
+** 개발/테스트/UAT/운영(Prod) 환경을 구분해 두는 것이 중요합니다.
+** 또한, 각 환경에서 변경사항을 사전에 검증할 수 있는 **통합 파이프라인**이 필요합니다.
+
+* LLM에게 고객 응답 초안을 작성하게 하는 것도 고려할 수 있습니다.
+** 예: 누락된 정보를 요청하는 메시지
+** 예: 청구 승인 여부에 대한 알림
+
+* 다만 이를 위해서는, LLM이 {company-name}의 정책을 이해하고 있어야 합니다.
+** 이는 https://research.ibm.com/blog/retrieval-augmented-generation-RAG[RAG,window=_blank] 접근 방식의 좋은 응용 사례가 될 수 있습니다.
 ====

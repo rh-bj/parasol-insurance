@@ -1,19 +1,21 @@
-= Model Serving
+= 모델 서빙
 include::_attributes.adoc[]
 
-. At this point, we need to deploy the model into {rhoai-short} model serving.
-. We will create another Data Connection...
-.. With almost identical information
-.. But we will change the bucket name from `{user}` to `models`
+. 이제 모델을 {rhoai-short}의 모델 서빙(Model Serving)에 배포해야 합니다.
+. 새로운 데이터 연결(Data Connection)을 생성할 것입니다...
+.. 입력 정보는 이전과 거의 동일하지만,
+.. 버킷 이름은 `{user}` 대신 `models`로 변경합니다.
 
-== Create a Data Connection
+== 데이터 연결 생성하기
 
-* In your Data Science project, on the Data Connection tab, click on **Add data connection** to create one that refers to the shared storage (Minio) where a copy of the model is stored.
+* Data Science 프로젝트 내에서 **Data Connection** 탭으로 이동한 후,  
+**Add data connection**을 클릭하여 모델이 저장된 공유 스토리지(Minio)를 참조하는 연결을 생성합니다.
 +
 [.bordershadow]
 image::04/04-add-data-connection.png[]
 
-* Here is the info you need to enter:
+* 다음 정보를 입력하세요:
+
 ** Name:
 [.lines_space]
 [.console-input]
@@ -51,23 +53,23 @@ none
 [subs=attributes+]
 models
 
-* The result should look like:
+* 아래와 같은 결과 화면이 나타나야 합니다:
 +
 [.bordershadow]
 image::04/model-data-connection.png[model connection]
 
-== Create a Model Server
+== 모델 서버 생성하기
 
-In your project, select the **Models** tab to create a model server:
+프로젝트 내에서 **Models** 탭으로 이동하여 모델 서버를 생성하세요.
 
-**VERY IMPORTANT**: in the following step, pay attention and select the right type of model server. Otherwise we would have to reset your project.
+**매우 중요**: 아래 단계에서 **올바른 유형의 모델 서버**를 선택해야 합니다. 잘못 선택하면 프로젝트를 초기화해야 할 수 있습니다.
 
-* In the **Multi-model serving platform** type of model, the one on the right, click **Add model server**:
+* 오른쪽에 있는 **Multi-model serving platform** 유형을 선택한 후 **Add model server**를 클릭합니다:
 +
 [.bordershadow]
 image::04/add-model-server.png[]
 
-* Here is the info you need to enter:
+* 아래 정보를 입력하세요:
 
 ** Model server name:
 [.lines_space]
@@ -98,7 +100,7 @@ Standard
 [.console-input]
 [source, text]
 [subs=attributes+]
-None (bug: even when selecting `None`, the drop down will still show `Select...`)
+None (버그: 실제로는 `None`을 선택해도 드롭다운엔 `Select...` 로 표시됩니다.)
 ** Model route
 [.lines_space]
 [.console-input]
@@ -112,24 +114,23 @@ unchecked
 [subs=attributes+]
 unchecked
 
-
-* The result should look like:
+* 설정이 완료되면 다음과 같은 화면이 표시됩니다:
 +
 [.bordershadow]
 image::04/add-model-server-config.png[]
 
-* You can click on **Add** to create the model server.
+* **Add** 버튼을 눌러 모델 서버를 생성하세요.
 
-== Deploy the Model
+== 모델 배포하기
 
-Still in your project, on the **Models** tab, under **Models and model servers**:
+프로젝트 내 **Models** 탭으로 이동한 후 **Models and model servers** 항목에서:
 
-* Click **Deploy model**:
+* **Deploy model** 버튼을 클릭합니다:
 +
 [.bordershadow]
 image::04/select-deploy-model.png[]
 
-* Here is the information you will need to enter:
+* 다음 정보를 입력하세요:
 
 ** Model name:
 [.lines_space]
@@ -142,7 +143,7 @@ My first Model
 [.console-input]
 [source, text]
 [subs=attributes+]
-My first Model Server (pre-filled)
+My first Model Server (자동 입력됨)
 ** Model server - Model framework
 [.lines_space]
 [.console-input]
@@ -162,35 +163,37 @@ Shared Minio - model
 [subs=attributes+]
 accident/
 
-* The result should look like:
+* 다음과 같은 화면이 나타납니다:
 +
 [.bordershadow]
 image::04/deploy-a-model.png[]
 
-* Click on **Deploy**.
-* If the model is successfully deployed you will see its status as green after 15 to 30 seconds.
+* **Deploy** 버튼을 클릭합니다.
+
+* 모델이 정상적으로 배포되면, 약 15~30초 후 상태가 초록색(green)으로 표시됩니다.
 +
 [.bordershadow]
 image::04/model-deployed-success.png[]
 
-We will now confirm that the model is indeed working by querying it!
+이제 모델이 실제로 동작하는지 확인하기 위해 쿼리를 날려보겠습니다!
 
-== Querying the served Model
+== 배포된 모델 쿼리하기
 
-Once the model is served, we can use it as an endpoint that can be queried. We'll send a request to it, and get a result. And unlike our earlier notebook-based version, this applies to anyone working within our cluster. This could either be colleagues, or applications.
+모델이 서빙되면, 엔드포인트 형태로 접근할 수 있게 됩니다.  
+이제 모델에게 요청을 보내고, 응답을 받아보겠습니다.  
+이 방식은 앞서 노트북에서 실습했던 것과 달리, **클러스터 내 모든 사용자 또는 애플리케이션**에서도 접근 가능한 방식입니다.
 
-* First, we need to get the URL of the model server.
-* To do this, click on the **Internal Service** link under the **Inference endpoint** column.
-* In the popup, you will see a few URLs for our model server.
+* 먼저, 모델 서버의 URL을 알아야 합니다.
+* **Inference endpoint** 열 아래의 **Internal Service** 링크를 클릭합니다.
+* 팝업 창에서 모델 서버에 대한 여러 URL이 표시됩니다:
 +
 [.bordershadow]
 image::04/inference-url.png[]
 
-* Note or copy the **RestUrl**, which should be something like `\http://modelmesh-serving.{user}:8008`
+* 이 중 **RestUrl**을 메모하거나 복사하세요. 예: `http://modelmesh-serving.{user}:8008`
 
-We will now use this URL to query the model.
+이제 이 URL을 사용해 모델에 쿼리를 보내보겠습니다.
 
-- In your running workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
-- Look for (and open) the notebook called `04-05-model-serving.ipynb`.
-- Execute the cells of the notebook, and ensure you understand what is happening.
-
+- 워크벤치에서 `parasol-insurance/lab-materials/04` 폴더로 이동합니다.
+- `04-05-model-serving.ipynb` 노트북을 열어보세요.
+- 셀을 실행하며 어떤 결과가 나오는지 확인해보세요.

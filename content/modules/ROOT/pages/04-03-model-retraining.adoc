@@ -1,62 +1,85 @@
-= Model Retraining
+// YOLO 모델의 재학습(retraining) 과정
+
+= 모델 재학습
 include::_attributes.adoc[]
 
-== Introduction
+== 소개
 
-To retrain the YOLO model we need a prepared dataset of car images with moderate and severe accident labels.  We have such a dataset (from https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] ) that has annotated images and has split them into training and validation datasets.  We will use this training set to retrain our current YOLO model.
+YOLO 모델을 재학습시키기 위해서는 **보통 수준 및 심각한 사고** 레이블이 포함된 자동차 이미지 데이터셋이 필요합니다.  
+우리는 이를 위해 주석이 달린 이미지와 학습/검증 세트로 분할된 데이터셋을 준비해두었습니다.  
+이 데이터셋은 https://universe.roboflow.com/accident-detection-ffdrf/accident-detection-8dvh5/dataset/1[RoboFlow,window=_blank] 에서 확인할 수 있습니다.
 
 [.bordershadow]
 image::04/roboflow-test-images.png[roboflow images]
 
-== Our training data
+== 학습 데이터 구성
 
 [%collapsible]
 ====
-1. The encode classes of objects we want to teach our model to detect is 0-'moderate' and 1-'severe'.
-2. We have created a folder for the dataset (data) and have have 2 subfolders in it: 'train' and 'valid'.  Within each subfolder we have created 2 subfolders:  'images' and 'labels'.
-3. Each image has an annotation text file in the 'labels' subfolder. The annotation text files have the same names as the image files.
+1. 우리가 학습시키려는 객체의 클래스는 총 2개이며, 0은 '보통(moderate)', 1은 '심각(severe)'으로 구분됩니다.  
+2. 데이터셋은 `data`라는 폴더 안에 `train`과 `valid`라는 두 하위 폴더로 나뉘어 있고,  
+   각각의 폴더 안에는 `images`와 `labels`라는 하위 폴더가 존재합니다.  
+3. 각 이미지와 동일한 이름의 주석 텍스트 파일이 `labels` 폴더에 존재하며, 객체 인식에 필요한 정보가 담겨 있습니다.
 ====
 
-== (Optional) Detailed code and execution
+== (선택) 코드 및 실행 상세
 
-If you want to dig deeper into this section, follow the instructions below. If you are pressed for time, you can skip to the next section.
+이 섹션을 더 깊이 이해하고 싶다면 아래 지침을 따라 실습해보세요.  
+시간이 부족하다면 이 섹션은 건너뛰고 다음으로 넘어가도 괜찮습니다.
 
-We have provided the following training data set, available as a zip file, and located in an S3 bucket: `accident-sample.zip` (as we don,t have time in this {ic-lab} to fully retrain the model, we will use a sample of the training data set).
+우리는 학습용 데이터 샘플을 S3 버킷에 압축 파일 형태(`accident-sample.zip`)로 제공하고 있습니다.  
+({ic-lab}에서는 전체 모델 재학습 시간을 고려해 전체가 아닌 샘플 데이터만을 사용합니다.)
 
-- In your running workbench, navigate to the folder `parasol-insurance/lab-materials/04`.
-- Look for (and open) the notebook called `04-03-model-retraining.ipynb`
-- Execute the cells of the notebook.
+- 실행 중인 워크벤치에서 `parasol-insurance/lab-materials/04` 폴더로 이동하세요.
+- `04-03-model-retraining.ipynb` 노트북을 찾아 열어보세요.
+- 셀을 실행하면서 학습 과정을 확인하세요.
 
-== Interpreting the Model re-Training Results
+== 모델 재학습 결과 해석
 [%collapsible]
 ====
-The following training run shows the results for the full dataset.
+다음은 전체 데이터셋을 사용한 학습 결과 예시입니다.
 
-Let's start by understanding what an 'epoch' is. Machine learning models are trained with specific datasets passed through the algorithm. Each time a dataset passes through an algorithm, it is said to have completed an epoch. Therefore, epoch, in machine learning, refers to the one entire passing of training data through the algorithm
+먼저 'epoch' 개념을 이해해봅시다.  
+머신러닝에서는 전체 학습 데이터를 모델에 한 번 통과시키는 것을 **1 epoch**라고 부릅니다.  
+즉, 1 epoch는 전체 데이터셋이 한 번 학습 알고리즘을 통과한 것을 의미합니다.
 
-In the training run below you can see a training run of 7 epochs with a batch size of 32 (meaning 32 images were analyzed simultaneously), that were set through the following code snippet:
+아래 예시에서는 총 7 epoch 동안 학습을 수행했으며, 한 번에 32개의 이미지를 처리하도록 **batch size**를 32로 설정했습니다:  
+```python
 results = model.train(data='./datasets/accident-full/data.yaml', epochs=7, imgsz=640, batch=32)
+```
 
-In the training run, each epoch shows a summary for both the training and validation phases: lines 1 and 2 show results of the training phase and lines 3 and 4 show the results of the validation phase for each epoch.
+학습 실행 중에는 각 epoch마다 **학습 단계**와 **검증 단계**의 요약 결과가 표시됩니다.  
+- 1~2번째 줄은 학습 단계 결과를 보여주며,  
+- 3~4번째 줄은 검증 단계 결과를 보여줍니다.
 
 image::04/model-retraining-summary.png[retraining summary]
 
-The training phase includes a calculation of the amount of error in a loss function, so the most valuable metrics here are box_loss and cls_loss:
+학습 단계에서는 **손실 함수(loss function)**를 기반으로 오류를 계산하며, 여기서 가장 중요한 지표는 `box_loss`와 `cls_loss`입니다:
 
-* box_loss shows the amount of errors in detected bounding boxes.
-* cls_loss shows the amount of errors in detected object classes.
+* `box_loss`: 모델이 예측한 **경계 상자(bounding box)**의 오류 정도를 나타냅니다.  
+* `cls_loss`: 모델이 예측한 **객체 분류(classification)**의 오류 정도를 나타냅니다.
 
-If the model really learns something from the data, we should see that these values decrease from epoch to epoch. +
-In the previous screenshot the box_loss decreased from 1.219 on the first epoch to 0.8386 in the last, and the cls_loss decreased from 1.875 to 0.9001.
+모델이 데이터를 기반으로 학습을 제대로 하고 있다면, 이 두 값은 **epoch가 진행될수록 점점 감소**해야 합니다.  
+이전 스크린샷 예시에서는:
+- `box_loss`: 1.219 (1번째 epoch) → 0.8386 (마지막 epoch)로 감소했고,
+- `cls_loss`: 1.875 → 0.9001로 감소했습니다.
 
-The other valuable quality metric is mAP50-95, which is Mean Average Precision. If the model learns and improves, the precision should grow from epoch to epoch. +
-In the previous screenshot mAP50-95 increased from 0.423 (epoch1) to 0.755 (epoch7).
+또 다른 중요한 품질 지표는 **mAP50-95** (Mean Average Precision)입니다.  
+모델이 잘 학습될수록 정확도(precision)는 점점 증가해야 합니다.  
+예시에서는 `mAP50-95`가 0.423 (1번째 epoch) → 0.755 (7번째 epoch)로 증가했습니다.
 
-We can also see that throughout the training, the GPU was used, with a memory consumption of a little bit more than 13GB.
+또한 학습 과정 전체에서 **GPU가 사용되었으며**, 약 13GB 이상의 GPU 메모리가 소모된 것도 확인할 수 있습니다.
 
-If after the last epoch you did not get acceptable precision, you can increase the number of epochs and run the training again. Also, you can tune other parameters like batch, lr0, lrf or change the optimizer you're using.
+만약 마지막 epoch 이후에도 충분한 정확도를 얻지 못했다면:
+- **epoch 수를 늘리거나**,  
+- `batch`, `lr0`, `lrf` 등의 파라미터를 조정하거나,  
+- **optimizer를 변경**해서 다시 학습을 시도할 수 있습니다.
 
-During training we export the trained model, after each epoch, to the /runs/detect/train/weights/last.pt file and the model with the highest precision to the /runs/detect/train/weights/best.pt file. So, after training is finished, you can get the best.pt file to use in production.
+모델은 학습 도중에 매 epoch마다 다음 경로에 저장됩니다:
+- `/runs/detect/train/weights/last.pt`: 마지막 epoch에서 학습된 모델
+- `/runs/detect/train/weights/best.pt`: **가장 높은 정확도를 기록한 모델**
 
-Note:  In real world problems, you need to run many more epochs than we have shown here, and be prepared to wait hours or days until training finishes, and not a mere 16 minutes as we did in this example.
-====
+→ 학습이 완료되면 일반적으로 **`best.pt` 파일을 실 운영 환경(production)에 사용**하게 됩니다.
+
+**참고:** 실제 프로젝트에서는 훨씬 더 많은 epoch를 수행해야 하며, 학습 완료까지 **수 시간 또는 수 일이 걸릴 수 있습니다.**  
+이 예시처럼 단 16분 만에 끝나는 경우는 드물다는 점을 염두에 두세요.

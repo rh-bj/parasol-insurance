@@ -1,16 +1,16 @@
-= Deploying the application via GitOps
+= GitOps를 통한 애플리케이션 배포
 include::_attributes.adoc[]
 
-== Deploy the application(s) via GitOps
+== GitOps로 애플리케이션 배포하기
 
-We are going to use OpenShift GitOps/{argocd} to deploy the application in your namespace.
+우리는 OpenShift GitOps / {argocd}를 활용하여, 애플리케이션을 여러분의 네임스페이스에 배포할 것입니다.
 
-- Access the {argocd} Console by clicking on the link in the top right menu.
+- 우측 상단 메뉴에서 {argocd} 콘솔 링크를 클릭해 접속하세요.
 +
 [.bordershadow]
 image::05/05-open-argocd.png[]
 
-- Click on "Log in via OpenShift" to log in with your credentials.
+- "Log in via OpenShift" 버튼을 클릭해 OpenShift 계정으로 로그인합니다.
 +
 [.bordershadow]
 image::05/05-login-argocd-openshift.png[]
@@ -18,19 +18,20 @@ image::05/05-login-argocd-openshift.png[]
 [.bordershadow]
 image::05/05-openshift-login.png[]
 
-- Once logged in, you will be redirected to the {argocd} Console. In the "Applications" tab, click on "Create Application".
+- 로그인 후 {argocd} 콘솔로 이동되며, "Applications" 탭에서 **"Create Application"** 버튼을 클릭하세요.
 +
 [.bordershadow]
 image::05/05-create-application.png[]
 
-- On the top right corner of the panel that opened, click on "Edit as YAML".
+- 열린 창 우측 상단에서 **"Edit as YAML"** 버튼을 클릭합니다.
 +
 [.bordershadow]
 image::05/05-edit-as-yaml.png[]
 
-- Copy the content of the following text, paste it in the editor (replace the default content), then click on "Save".
+- 아래의 YAML 내용을 복사하여 편집기에 붙여넣고, 기존 내용을 대체한 후 **"Save"** 를 클릭하세요:
 +
 [source, yaml, subs="attributes+"]
+----
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -49,26 +50,29 @@ spec:
       prune: true
       selfHeal: false
     syncOptions: [CreateNamespace=false]
+----
 +
 [.bordershadow]
 image::05/05-application-yaml-save.png[]
 
-- Back on the form view, click on "Create".
+- 다시 폼 화면으로 돌아오면 **"Create"** 버튼을 클릭하세요.
 +
 [.bordershadow]
 image::05/05-create-application-validation.png[]
 
-- The Application will start deploying. You can click on the Card to see the details.
+- 애플리케이션 배포가 시작됩니다.  
+카드를 클릭하면 배포 상태의 상세 정보를 확인할 수 있습니다.
 +
 [.bordershadow]
 image::05/05-application-creation.png[]
 
-- After a few seconds, all the elements will be deployed, and the Application will report as "Healthy" and "Synced".
+- 잠시 후 모든 구성요소가 배포되면, 애플리케이션 상태는 **"Healthy"** 및 **"Synced"** 로 표시됩니다.
 +
 [.bordershadow]
-image::05/05-application-deployed.png[] 
+image::05/05-application-deployed.png[]
 
-- You can now access the application at the following URL:
-https://ic-app-{user}.{openshift_cluster_ingress_domain}/[https://ic-app-{user}.{openshift_cluster_ingress_domain}/,window=_blank]
+- 이제 다음 URL을 통해 애플리케이션에 접근할 수 있습니다:  
+  https://ic-app-{user}.{openshift_cluster_ingress_domain}/[https://ic-app-{user}.{openshift_cluster_ingress_domain}/,window=_blank]
 
-Open the the URL in your browser to access the application and head to the next step.
+브라우저에서 위 주소를 열어 애플리케이션을 확인해보세요.  
+그리고 다음 단계로 진행합니다.

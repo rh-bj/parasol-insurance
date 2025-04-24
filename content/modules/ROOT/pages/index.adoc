@@ -1,62 +1,62 @@
 = {lab_name}
 include::_attributes.adoc[]
 
-== {ic} Overview
+== {ic} 개요
 
-This {ic-lab} will illustrate how the use of various AI/ML technologies can be combined to produce a valuable solution to a business problem.
+이 {ic-lab}에서는 다양한 AI/ML 기술들을 결합하여 **실제 비즈니스 문제에 대한 유용한 솔루션을 만들어내는 방식**을 보여줍니다.
 
-The information, code, models and techniques it contains are illustrations of what an AI-enhanced application first prototype could look like. It is not the definitive way of addressing the stated requirements.
+여기에 포함된 정보, 코드, 모델, 기술들은 AI 기반 애플리케이션의 **첫 번째 프로토타입**이 어떤 형태일 수 있는지를 예시하는 목적이며, 주어진 요구사항을 해결하는 **유일한 방법**은 아닙니다.
 
-== Disclaimer
+== 면책사항
 
-This {ic-lab} is an example of what a customer could build using {rhoai}. {rhoai} itself has no specific feature related to Insurance Claim Processing.
+이 {ic-lab}은 {rhoai}를 활용해 고객이 구축할 수 있는 **가능한 형태의 예시**입니다. {rhoai} 자체는 보험 청구 처리(Insurance Claim Processing)에 특화된 기능을 포함하고 있지는 않습니다.
 
-This {ic-lab} makes use of large language models (LLM) and image processing models. These models are not included in the {rhoai} product. They are provided as a convenience for this {ic-lab}.
+이 {ic-lab}에서는 LLM(대형 언어 모델) 및 이미지 처리 모델을 사용합니다. 이러한 모델은 {rhoai} 제품에 포함된 것이 아니라, **본 실습 목적에 한해 편의상 제공되는 것입니다.**
 
-The quality of these models is enough for a prototype. Choosing the right model to use in a production environment is a complex task that requires a lot of experimentation and tuning. This {ic-lab} does not cover this aspect.
+해당 모델들의 품질은 **프로토타입 수준**에서는 충분하지만, 실제 운영 환경에 적용하기 위해선 적절한 모델 선택과 튜닝을 위한 **충분한 실험과 검증**이 필요합니다. 이 {ic-lab}에서는 그 과정을 다루지 않습니다.
 
-== Timetable
+== 시간표
 
-This is a tentative timetable for the materials that will be presented.
+아래는 본 실습에서 다룰 주제들과 예상 소요 시간입니다.
 
 [width="90%",cols="3,^2,^2,10",options="header"]
 |=========================================================
-| Name |Duration |Type |Description
+| 항목 | 소요 시간(분) | 유형 | 설명
 
-|Background |5 | Presentation
-a|- We describe what the desired end state looks like.
-- Describe overall user experience and underlying architecture.
-- Share mockups for better visualization
+|배경 소개 |5 | 발표
+a|- 최종 목표 상태를 설명합니다.  
+- 사용자 경험과 전반적인 아키텍처를 설명합니다.  
+- 시각화를 위한 목업을 공유합니다.
 
-|Connection and Setup |5 | Hands-On
-a|- Attendees get connected
-- help validate environment health
-- access the playpen project
+|연결 및 환경 설정 |5 | 실습
+a|- 참가자가 환경에 연결합니다.  
+- 환경 정상 작동을 확인합니다.  
+- 실습용 프로젝트에 접근합니다.
 
-|LLM |20 | Hands-On
-a|- summarization check
-- sentiment check
-- Model Comparison check and choice
-- prompt engineering exercise
-- confidence-check pipeline
+|LLM 실습 |20 | 실습
+a|- 텍스트 요약  
+- 감정 분석  
+- 모델 비교 및 선택  
+- 프롬프트 엔지니어링  
+- 신뢰도 검증 파이프라인
 
-|Image Processing |20 | Hands-On
-a|- car recognition checks
-- re-training exercise
-- model deployment
+|이미지 처리 |20 | 실습
+a|- 차량 인식  
+- 모델 재학습  
+- 모델 서빙 및 배포
 
-|Web App  |20 | Hands-On
-a|- deployment
-- update
-- RAG
+|웹 애플리케이션 |20 | 실습
+a|- 애플리케이션 배포  
+- 업데이트  
+- RAG 적용
 
-|Productization  |5 | Presentation + discussion
-a|- What else could we add that would have value?
-- What else could we do following the same patterns?
+|제품화 논의 |5 | 발표 + 토의
+a|- 무엇을 더 추가하면 가치가 있을까요?  
+- 동일한 방식으로 다른 작업도 할 수 있을까요?
 
 |=========================================================
 
+== 기여하기
 
-== Contributing
-
-If you are interested in contributing to this project, consult this GitHub Repo: https://github.com/rh-aiservices-bu/parasol-insurance/[https://github.com/rh-aiservices-bu/parasol-insurance/,window=_blank]
+이 프로젝트에 기여하고 싶으신 분은 다음 GitHub 저장소를 참고해주세요:  
+https://github.com/rh-aiservices-bu/parasol-insurance/[https://github.com/rh-aiservices-bu/parasol-insurance/,window=_blank]
