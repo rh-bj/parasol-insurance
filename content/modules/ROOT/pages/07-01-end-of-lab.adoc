@@ -9,7 +9,7 @@ include::_attributes.adoc[]
 - https://github.com/rh-aiservices-bu/parasol-insurance/issues[이슈 등록하기,window=_blank]  
 - https://github.com/rh-aiservices-bu/parasol-insurance/pulls[Pull Request 보내기,window=_blank]
 
-{ic}의 전체 실습 자료는 다음 링크에서 언제든지 확인하실 수 있습니다. (영문으로 된 원본본) 
+{ic}의 전체 실습 자료는 다음 링크에서 언제든지 확인하실 수 있습니다. (영문으로 된 원본) 
 https://rh-aiservices-bu.github.io/parasol-insurance/[https://rh-aiservices-bu.github.io/parasol-insurance/,window=_blank]  
 ※ 해당 사이트는 지속적으로 개선되며 새로운 콘텐츠로 업데이트됩니다. 꼭 즐겨찾기 해두세요!
 
