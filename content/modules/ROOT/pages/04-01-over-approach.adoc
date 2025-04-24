@@ -23,5 +23,5 @@ include::_attributes.adoc[]
 image::04/sample-car-image.png[car image]
 
 - 실행 중인 워크벤치에서 `parasol-insurance/lab-materials/04` 폴더로 이동하세요.
-- `04-01-over-approach.ipynb`라는 이름의 노트북을 찾아 열어주세요.
+- `04-01-over-approach.ipynb` 라는 이름의 노트북을 찾아 열어주세요.
 - 노트북의 셀을 실행하면서, 각 단계에서 어떤 일이 일어나는지 잘 이해해보세요.

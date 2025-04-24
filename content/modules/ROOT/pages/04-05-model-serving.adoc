@@ -4,7 +4,7 @@ include::_attributes.adoc[]
 . 이제 모델을 {rhoai-short}의 모델 서빙(Model Serving)에 배포해야 합니다.
 . 새로운 데이터 연결(Data Connection)을 생성할 것입니다...
 .. 입력 정보는 이전과 거의 동일하지만,
-.. 버킷 이름은 `{user}` 대신 `models`로 변경합니다.
+.. 버킷 이름은 `{user}` 대신 `models` 로 변경합니다.
 
 == 데이터 연결 생성하기
 
@@ -138,12 +138,12 @@ image::04/select-deploy-model.png[]
 [source, text]
 [subs=attributes+]
 My first Model
-** Model server
+** Model server (자동 입력됨)
 [.lines_space]
 [.console-input]
 [source, text]
 [subs=attributes+]
-My first Model Server (자동 입력됨)
+My first Model Server 
 ** Model server - Model framework
 [.lines_space]
 [.console-input]

@@ -61,6 +61,7 @@ image::04/model-retraining-summary.png[retraining summary]
 
 모델이 데이터를 기반으로 학습을 제대로 하고 있다면, 이 두 값은 **epoch가 진행될수록 점점 감소**해야 합니다.  
 이전 스크린샷 예시에서는:
+
 - `box_loss`: 1.219 (1번째 epoch) → 0.8386 (마지막 epoch)로 감소했고,
 - `cls_loss`: 1.875 → 0.9001로 감소했습니다.
 
@@ -71,11 +72,13 @@ image::04/model-retraining-summary.png[retraining summary]
 또한 학습 과정 전체에서 **GPU가 사용되었으며**, 약 13GB 이상의 GPU 메모리가 소모된 것도 확인할 수 있습니다.
 
 만약 마지막 epoch 이후에도 충분한 정확도를 얻지 못했다면:
+
 - **epoch 수를 늘리거나**,  
 - `batch`, `lr0`, `lrf` 등의 파라미터를 조정하거나,  
 - **optimizer를 변경**해서 다시 학습을 시도할 수 있습니다.
 
 모델은 학습 도중에 매 epoch마다 다음 경로에 저장됩니다:
+
 - `/runs/detect/train/weights/last.pt`: 마지막 epoch에서 학습된 모델
 - `/runs/detect/train/weights/best.pt`: **가장 높은 정확도를 기록한 모델**
 
