@@ -8,39 +8,39 @@ include::_attributes.adoc[]
 * 손해 사정인이 문서를 더 빠르게 읽을 수 있도록 지원합니다:
 +
 [.bordershadow]
-image::01/proto-summary-kor.png[test image]
+image::01/proto-summary-kor.png[test image, scaledwidth=50%]
 
 == LLM을 활용한 정보 추출
 
 * 데이터베이스 입력을 위한 핵심 정보를 자동으로 추출합니다:
 +
 [.bordershadow]
-image::01/proto-info-extract-kor.png[info extraction]
+image::01/proto-info-extract-kor.png[info extraction, scaledwidth=50%]
 
 == LLM을 활용한 감정 분석
 
 * 텍스트의 감정(어조)을 감지하고, 이에 기반한 조치를 가능하게 합니다:
 +
 [.bordershadow]
-image::01/proto-sentiment-analysis-kor.png[]
+image::01/proto-sentiment-analysis-kor.png[scaledwidth=50%]
 
 == 이미지 인식을 활용한 차량 식별
 
 * 고객이 제출한 사진에서 차량을 식별하고 테두리를 설정합니다:
 +
 [.bordershadow]
-image::01/proto-car-recog-kor.png[]
+image::01/proto-car-recog-kor.png[scaledwidth=50%]
 
 == 이미지 인식을 활용한 손상 탐지
 
 * 사진을 기반으로 손상 정도를 평가합니다:
 +
 [.bordershadow]
-image::01/proto-accident-grading-kor.png[]
+image::01/proto-accident-grading-kor.png[scaledwidth=50%]
 
 == 보험 청구를 검토/처리하는 웹 애플리케이션
 
 * 위 도구들을 통합하여, 사용자들이 들어오는 청구 건을 좀 더 효율적으로 처리할 수 있는 애플리케이션을 제공합니다:
 +
 [.bordershadow]
-image::01/proto-claims-processing-app-kor.png[]
+image::01/proto-claims-processing-app-kor.png[scaledwidth=50%]
