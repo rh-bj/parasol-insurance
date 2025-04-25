@@ -6,11 +6,11 @@ nav:
 
 asciidoc:
   attributes:
-    release-version: main-rhoai-2.13
+    release-version: kor-rhoai-2.13
     page-pagination: true
     experimental:
     numbered:
-    lab_name: "Parasol Insurance AI Workshop"
+    lab_name: "Red Hat AI Roadshow"
     guid: my-guid
     ssh_user: lab-user
     ssh_password: lab-user
