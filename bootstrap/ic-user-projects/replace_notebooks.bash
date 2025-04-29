@@ -17,7 +17,7 @@ cat << EOF | oc apply -f-
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: clone-repo
+  name: replace-cloned-repo
   namespace: $USER_PROJECT
 spec:
   backoffLimit: 4
