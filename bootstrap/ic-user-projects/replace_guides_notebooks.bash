@@ -5,7 +5,12 @@ WORKBENCH_NAME="my-workbench"
 WORKBENCH_IMAGE="ic-workbench:1.2"
 PIPELINE_ENGINE="Argo"
 BRANCH_NAME="kor-rhoai-2.13"
+GIT_REPO_URL="https://github.com/rh-bj/parasol-insurance.git"
 
+# Replace showroom contents to the translated version
+for j in $(oc projects | grep showroom); do oc set env deployment/showroom -c content -e GIT_REPO_URL=$GIT_REPO_URL -e GIT_REPO_REF=$BRANCH_NAME -n $j; done
+
+# Replace notebooks to the translated version
 for i in $(seq 1 $user_count);
 do
 
