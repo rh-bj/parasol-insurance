@@ -20,7 +20,7 @@
 ** xref:03-03-information-extractions.adoc[3.3 정보 추출]
 ** xref:03-04-comparing-model-servers.adoc[3.4 모델 서버 비교]
 ** xref:03-05-retrieval-augmented-generation.adoc[3.5 RAG (Retrieval-Augmented Generation)]
-** xref:03-06-confidence-check.adoc[3.6 신뢰도 검증 파이프라인]
+** xref:03-06-confidence-check.adoc[3.6 건전성 검증 파이프라인]
 ** xref:03-07-prompt-engineering.adoc[3.7 프롬프트 엔지니어링 실습 (선택)]
 
 * 4. 이미지 처리 및 모델 서빙
