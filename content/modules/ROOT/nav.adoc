@@ -23,11 +23,12 @@
 ** xref:03-06-confidence-check.adoc[3.6 신뢰도 검증 파이프라인]
 ** xref:03-07-prompt-engineering.adoc[3.7 프롬프트 엔지니어링 실습 (선택)]
 
-* 4. 이미지 처리
+* 4. 이미지 처리 및 모델 서빙
 ** xref:04-01-over-approach.adoc[4.1 전체 접근 방식]
 ** xref:04-02-car-recog.adoc[4.2 차량 인식 (선택)]
 ** xref:04-03-model-retraining.adoc[4.3 모델 재학습 (선택)]
 ** xref:04-04-accident-recog.adoc[4.4 사고/피해 인식 (선택)]
+//** xref:04-05-model-serving.adoc[4.5 모델 서빙]
 ** xref:04-05-model-serving.adoc[4.5 모델 서빙]
 
 * 5. 웹 애플리케이션 배포
