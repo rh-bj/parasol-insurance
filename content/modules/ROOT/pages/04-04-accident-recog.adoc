@@ -8,7 +8,7 @@ include::_attributes.adoc[]
 우리는 학습된 모델을 **ONNX 형식**으로 변환하고, 해당 모델 파일을 S3 버킷에 저장해두었습니다.  
 이제 이 ONNX 모델을 사용하여 샘플 테스트 이미지들을 평가해볼 것입니다.
 
-재학습된 모델을 사용하면, 아래 예시처럼 **심각한 자동차 사고(severe crash)**를 **90% 확신도**로 인식할 수 있게 됩니다:
+재학습된 모델을 사용하면, 아래 예시처럼 **심각한 자동차 사고(severe crash)**를 **90% 신뢰도**로 인식할 수 있게 됩니다:
 
 [.bordershadow]
 image::04/retrained-model-results2.png[retrained modelresults]
