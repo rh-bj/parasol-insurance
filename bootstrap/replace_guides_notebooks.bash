@@ -52,7 +52,7 @@ spec:
         args:
         - -ec
         - |-
-          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- bash -c "rm -Rf parasol-insurance && git clone https://github.com/rh-bj/parasol-insurance && cd parasol-insurance && git checkout $BRANCH_NAME && rm -Rf bootstrap content default-site.yml LICENSE README.md"
+          pod_name=\$(oc get pods --selector=app=$WORKBENCH_NAME -o jsonpath='{.items[0].metadata.name}') && oc exec \$pod_name -- bash -c "rm -Rf parasol-insurance && git clone https://github.com/rh-bj/parasol-insurance && cd parasol-insurance && git checkout $BRANCH_NAME && rm -Rf bootstrap default-site.yml LICENSE README.md"
       restartPolicy: Never
 EOF
 sleep 20
