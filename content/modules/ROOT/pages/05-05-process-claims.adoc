@@ -8,7 +8,7 @@ include::_attributes.adoc[]
 [.bordershadow]
 image::05/05-new-app-claim-unprocessed.jpg[]
 
-물론 우리는 이러한 청구들을 처리하길 원하며, **자동화된 방식**이라면 더할 나위 없이 좋겠죠!
+물론 우리는 이러한 청구들도 손쉽게 처리하길 원하며, **자동화된 방식**이라면 더할 나위 없이 좋겠죠!
 
 이를 위해, 이전에 사용한 신뢰도 점검 파이프라인처럼 **수동 실행(ad-hoc)** 또는 **스케줄 실행**이 가능한 파이프라인을 활용할 것입니다.  
 다만 이번에는 기술적으로 Data Science Pipeline이 아닌, **순수 Argo Workflow**에 가깝습니다.
@@ -134,3 +134,5 @@ image::05/05-process-claim3-app.jpg[claim3processed]
 +
 [.bordershadow]
 image::05/05-processed-claim.jpg[claim3processed]
+
+이 실습에서는 청구 처리 파이프라인을 우리가 직접 실행했지만, 프로토타입 애플리케이션을 개선한다면 새로운 청구가 들어왔을 때 자동으로 처리하도록 하거나 앱을 통해 청구 처리를 시작하도록 하는 방법도 가능해질 것입니다.
