@@ -2,7 +2,7 @@
 = 건전성 검사 파이프라인 (Confidence-Check Pipeline)
 include::_attributes.adoc[]
 
-== 파이프라인이 무엇을 하는가?
+== 이 파이프라인이 무엇을 하는가?
 
 모든 것이 정상적으로 작동하고 있는지, 모델이 변조되지 않았는지를 확인하기 위해  
 모델의 엔드포인트를 테스트하는 **건전성 검사 파이프라인(confidence-check pipeline)**을 구성할 것입니다. +
