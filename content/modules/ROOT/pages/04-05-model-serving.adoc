@@ -152,7 +152,7 @@ My first Model
 [source, text]
 [subs=attributes+]
 My first Model Server 
-** Model server - Model framework
+** Model framework
 [.lines_space]
 [.console-input]
 [source, text]

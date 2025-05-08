@@ -32,8 +32,8 @@ asciidoc:
     ocp-short: "OpenShift"
     argocd: "ArgoCD"
     ocp-gitops: "OpenShift GitOps"
-    company-name: "Parasol Insurance"
-    ic-lab: "lab"
+    company-name: "파라솔 보험(Parasol Insurance)"
+    ic-lab: "실습"
     ic: "{company-name} {ic-lab}"
 
   extensions:
