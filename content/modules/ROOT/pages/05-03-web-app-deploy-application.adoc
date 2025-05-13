@@ -21,7 +21,7 @@ image::05/05-open-argocd.png[]
 ====
 로그인 하실 유저 이름은 `{user}` 입니다. 
 ====
-+
+
 [.bordershadow]
 image::05/05-login-argocd-openshift.png[]
 +
