@@ -10,12 +10,12 @@ include::_attributes.adoc[]
 
 == 실습 단계
 . 이제 모델을 {rhoai-short}의 모델 서빙(Model Serving)에 배포해야 합니다.
-. 새로운 데이터 연결(Data Connection)을 생성할 것입니다...
-.. 입력 정보는 이전과 거의 동일하지만,
-.. 버킷 이름은 `{user}` 대신 `models` 로 변경합니다.
+. 새로운 데이터 연결(Data Connection)을 생성합니다.
+.. 버킷 이름은 `models` 로 설정합니다.
 
 == 데이터 연결 생성하기
-
+* OpenShift AI 대시보드로 이동하세요. (아래 링크 또는 우상단의 Links -> OpenShift AI Dashboard 클릭)
+** https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/[https://rhods-dashboard-redhat-ods-applications.{openshift_cluster_ingress_domain}/,window=_blank]
 * Data Science 프로젝트 내에서 **Data Connection** 탭으로 이동한 후,  
 **Add data connection**을 클릭하여 모델이 저장된 공유 스토리지(Minio)를 참조하는 연결을 생성합니다.
 +

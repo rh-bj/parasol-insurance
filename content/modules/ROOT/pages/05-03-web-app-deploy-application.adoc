@@ -16,6 +16,11 @@ include::_attributes.adoc[]
 image::05/05-open-argocd.png[]
 
 - "Log in via OpenShift" 버튼을 클릭해 OpenShift 계정으로 로그인합니다.
+
+[IMPORTANT]
+====
+로그인 하실 유저 이름은 `{user}` 입니다. 
+====
 +
 [.bordershadow]
 image::05/05-login-argocd-openshift.png[]
